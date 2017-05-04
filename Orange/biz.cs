@@ -19,19 +19,7 @@ namespace Orange
             db.Users.Add(user);
             int res = db.SaveChanges();
             if (res == 1) {
-                //db.Users.Where(a => a.username == username);
-                //User_IN user_in = new User_IN();
-                //user_in.name = "未填写";
-                //user_in.telephone = "未填写";
-                //user_in.sex = 0;
-                //user_in.birthday = "未填写";
-                //db.UsersIN.Add(user_in);
-                //int res1 = db.SaveChanges();
-                //if (res1 == 1)
-                //{
-
-                    return true;
-                //}
+             
             }
             return false;
         }
