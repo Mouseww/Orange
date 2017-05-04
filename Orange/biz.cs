@@ -58,6 +58,7 @@ namespace Orange
                 int id = Int32.Parse(arry);
                 var item=db.Shopcart.Where(a => a.Id == id).ToList();
                 db.Shopcart.Remove(item[0]);
+
             }
             int res = db.SaveChanges();
             if (res == 1) { return true; }
