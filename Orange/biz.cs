@@ -12,13 +12,26 @@ namespace Orange
         ApplicationDbContext db = new ApplicationDbContext();
         internal Boolean AddUser(string username,string password)
         {
+            
             User user = new User();
             user.username = username;
             user.password = password;
             db.Users.Add(user);
             int res = db.SaveChanges();
-            if (res == 1) { 
-            return true;
+            if (res == 1) {
+                //db.Users.Where(a => a.username == username);
+                //User_IN user_in = new User_IN();
+                //user_in.name = "未填写";
+                //user_in.telephone = "未填写";
+                //user_in.sex = 0;
+                //user_in.birthday = "未填写";
+                //db.UsersIN.Add(user_in);
+                //int res1 = db.SaveChanges();
+                //if (res1 == 1)
+                //{
+
+                    return true;
+                //}
             }
             return false;
         }
@@ -188,9 +201,19 @@ namespace Orange
         /// </summary>
         /// <param name="user1"></param>
         /// <returns></returns>
-        internal List<User> Login(User user1)//login
+        internal List<VMUser> Login(User user1)//login
         {
-            return db.Users.Where(a => a.username == user1.username && a.password == user1.password).ToList();
+            return db.Users.Where(a => a.username == user1.username && a.password == user1.password)
+                .Select(a=>new VMUser
+                {name=a.User_IN.name,
+                birthday=a.User_IN.birthday,
+                sex=a.User_IN.sex.ToString(),
+                telephone=a.User_IN.telephone,
+                username=a.username,
+                password=a.password,
+                nikename=a.User_IN.nikename
+                })
+                .ToList();
         }
         /// <summary>
         /// 获得商品选项1属性
@@ -215,7 +238,7 @@ namespace Orange
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        internal List<ShopCars> shopcart(User user)
+        internal List<ShopCars> shopcart(VMUser user)
         {
 
             return db.Shopcart.Where(a => a.Username == user.username)
@@ -240,7 +263,7 @@ namespace Orange
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        internal int shopcart_number(User user)
+        internal int shopcart_number(VMUser user)
         {
             var a = db.Shopcart.Where(ab => ab.Username == user.username).ToList();
             return a.Count;

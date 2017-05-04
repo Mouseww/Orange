@@ -7,6 +7,7 @@ namespace Orange.Models
         public int ID { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public string Name { get; set; }
+        
+        public User_IN User_IN { get; set; }
     }
 }

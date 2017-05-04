@@ -1,4 +1,5 @@
 ﻿using Orange.Models;
+using Orange.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Orange.Controllers
         }
         public ActionResult Index()
         {
-            var user = (User)Session["User"];
+            var user = (VMUser)Session["User"];
 
             if (user == null)
             {

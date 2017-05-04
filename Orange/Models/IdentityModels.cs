@@ -34,6 +34,7 @@ namespace Orange.Models
         public DbSet<Commodity_1> Commodity_1 { get; set; }
         public DbSet<Commodity_2> Commodity_2 { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<User_IN> UsersIN { get; set; }
         public DbSet<Commodity_attribute> Commodity_attribute { get; set; }
         public DbSet<Shopcart> Shopcart { get; set; }
         public DbSet<IMG> IMG { get; set; }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Text.RegularExpressions;
+using Orange.ViewModel;
+
 namespace Orange.Controllers
 {
     public class shopcartController : Controller
@@ -12,7 +14,7 @@ namespace Orange.Controllers
         // GET: shopcart
         public ActionResult Index(string delect_id,string arry)
         {
-            var user = (User)Session["User"];
+            var user = (VMUser)Session["User"];
 
             if (user == null)
             {

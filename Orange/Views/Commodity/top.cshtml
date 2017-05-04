@@ -19,7 +19,7 @@
     
 </head>
 <body>
-    @{var user = (Orange.Models.User)Session["User"];
+   @{var user = (Orange.ViewModel.VMUser)Session["User"];  
         var res = ViewBag.res;}
     <div class="hmtop">
         <!--顶部导航条 -->
@@ -43,7 +43,7 @@
                         }
                         else
                         {
-                            <p> 欢迎来到Orange：<a href="../Login/Login" target="_top" class="h">@user.Name</a>&nbsp;<a id="remove_user" href="../Commodity/Index?remove_user=1">[注销]</a></p>
+                            <p> 欢迎来到Orange：<a href="../Person/Index" target="_top" class="h">@user.nikename</a>&nbsp;<a id="remove_user" href="../Commodity/Index?remove_user=1">[注销]</a></p>
 
 
 

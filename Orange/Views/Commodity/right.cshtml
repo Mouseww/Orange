@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    @{var user = (Orange.Models.User)Session["User"];
+    @{var user = (Orange.ViewModel.VMUser)Session["User"];  
         var res = ViewBag.res;
         }
     <meta name="viewport" content="width=device-width" />
@@ -43,7 +43,7 @@
                             <ul class="user_info">
                                 @if (user != null)
                                 {
-                                    <li>用户名：@user.Name</li>
+                                    <li>用户名：@user.nikename</li>
                                     <li>级&nbsp;别：普通会员</li>
                                 }
                                 else

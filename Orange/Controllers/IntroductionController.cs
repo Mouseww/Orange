@@ -1,4 +1,5 @@
 ﻿using Orange.Models;
+using Orange.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Orange.Controllers
         // GET: Introduction
         public ActionResult Index(int id, string Commodity_id, string attr, string attr2, string number,string remove_user)
         {
-            User user = (User)Session["User"];
+            var user = (VMUser)Session["User"];
 
             if (remove_user == "1")//如果点击了注销，退出登录状态
             {

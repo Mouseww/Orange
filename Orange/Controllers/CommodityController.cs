@@ -22,7 +22,7 @@ namespace Orange.Controllers
         // GET: Commodity
         public ActionResult top()
         {
-            var user = (User)Session["User"];
+            var user = (VMUser)Session["User"];
             if (user != null)
             {
                 var res = new biz().shopcart_number(user);
@@ -32,7 +32,7 @@ namespace Orange.Controllers
         }
         public ActionResult right()
         {
-            var user = (User)Session["User"];
+            var user = (VMUser)Session["User"];
             if (user != null) {
                 var res = new biz().shopcart_number(user);
                 ViewBag.res = res;
@@ -41,7 +41,7 @@ namespace Orange.Controllers
         }
         public ActionResult top_Catalog()
         {
-            var user = (User)Session["User"];
+            var user = (VMUser)Session["User"];
             if (user != null)
             {
                 var res = new biz().shopcart_number(user);
@@ -176,10 +176,6 @@ namespace Orange.Controllers
 
         // GET: Commodity/Create
       
-        public JsonResult ajax1(int id)
-        {
-            var Json1 = new biz().show_option1(id);
-            return Json(Json1, JsonRequestBehavior.AllowGet);
-        }
+      
     }
 }

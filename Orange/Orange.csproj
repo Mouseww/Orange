@@ -203,12 +203,14 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Shopcart.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User_IN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\Commodity1.cs" />
     <Compile Include="ViewModel\ShopCars.cs" />
     <Compile Include="ViewModel\VMCommodity.cs" />
     <Compile Include="ViewModel\VMSoure.cs" />
+    <Compile Include="ViewModel\VMUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AmazeUI-2.4.2\assets\css\admin.css" />
