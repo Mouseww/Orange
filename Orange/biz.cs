@@ -18,7 +18,7 @@ namespace Orange
             db.Users.Add(user);
             int res = db.SaveChanges();
             if (res == 1) { 
-            return true;
+            return true; 
             }
             return false;
         }
