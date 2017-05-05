@@ -274,6 +274,8 @@
     <Content Include="Content\optstyle.css" />
     <Content Include="Content\orstyle.css" />
     <Content Include="Content\personal.css" />
+    <Content Include="Content\personDate\images\date_bg.png" />
+    <Content Include="Content\personDate\lyz.calendar.css" />
     <Content Include="Content\point.css" />
     <Content Include="Content\refstyle.css" />
     <Content Include="Content\seastyle.css" />
@@ -394,6 +396,7 @@
     <Content Include="images\couponli.png" />
     <Content Include="images\cp.jpg" />
     <Content Include="images\cp2.jpg" />
+    <Content Include="images\date_bg.png" />
     <Content Include="images\day-to.png" />
     <Content Include="images\extra.png" />
     <Content Include="images\EZA27501.jpg" />
@@ -566,6 +569,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\list.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\personDate\jquery123.js" />
+    <Content Include="Scripts\personDate\lyz.calendar.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script.js" />

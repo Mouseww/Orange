@@ -20,13 +20,17 @@
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
 
+    <!--日期插件的引用-->
+    <link href="~/Content/personDate/lyz.calendar.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/personDate/jquery123.js" type="text/javascript"></script>
+    <script src="~/Scripts/personDate/lyz.calendar.min.js" type="text/javascript"></script>
+    
+    <!--日期插件的引用-->
 </head>
-
 <body>
     <!--头 -->
     <header>
         <article>
-
             <div id="top">
                 <script>
           $('#top').load('../Commodity/top')
@@ -34,14 +38,42 @@
             </div>
 
             <div class="clear"></div>
-
-
         </article>
     </header>
     <div id="top_two" class="nav-table">
         <script>
     $('#top_two').load('../Commodity/top_two')
         </script>
+
+        @* 日期插件的jquery代码 *@
+        <script>
+    $(function () {
+        $("#txtBeginDate").calendar({
+
+            controlId: "divDate",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+            speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+            complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+            readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+            upperLimit: new Date(),                               // 日期上限，默认：NaN(不限制)
+
+            lowerLimit: new Date("1917/01/01"),                   // 日期下限，默认：NaN(不限制)
+
+            callback: function () {                               // 点击选择日期后的回调函数
+
+            }
+
+        });
+
+        //$("#txtEndDate").calendar();
+
+    });
+
+        </script>
+
     </div>
     <b class="line"></b>
     <div class="center">
@@ -115,32 +147,15 @@
                                     </label>
                                 </div>
                             </div>
-
+                            @* 日期插件 *@
                             <div class="am-form-group">
                                 <label for="user-birth" class="am-form-label">生日</label>
-                                <div class="am-form-content birth">
-                                    <div class="birth-select">
-                                        <select data-am-selected>
-                                            <option value="a">2015</option>
-                                            <option value="b">1987</option>
-                                        </select>
-                                        <em>年</em>
-                                    </div>
-                                    <div class="birth-select2">
-                                        <select data-am-selected>
-                                            <option value="a">12</option>
-                                            <option value="b">8</option>
-                                        </select>
-                                        <em>月</em>
-                                    </div>
-                                    <div class="birth-select2">
-                                        <select data-am-selected>
-                                            <option value="a">21</option>
-                                            <option value="b">23</option>
-                                        </select>
-                                        <em>日</em>
-                                    </div>
+                                <div class="am-form-content">
+                                    <input class="am-form-label" id="txtBeginDate" style="border:1px solid #E4EAEE"/>
                                 </div>
+                                
+                               
+                              
 
                             </div>
                             <div class="am-form-group">
