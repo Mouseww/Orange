@@ -158,7 +158,7 @@ namespace Orange
         }
         internal List<VMCommodity> GetMoK(string type)
         {
-            return db.IMG.Where(a => a.type == type)
+            var db1= db.IMG.Where(a => a.type == type)
                 .Select(a => new VMCommodity
                 {
                     Id=a.Commodity.Id,
@@ -167,8 +167,8 @@ namespace Orange
                     jieshao=a.Commodity.jieshao,
                  Price=a.Commodity.Price,
                 }
-
             ).ToList();
+            return db1;
         }
         /// <summary>
         /// 获取商品列表

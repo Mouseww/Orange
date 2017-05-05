@@ -555,6 +555,7 @@
     <Content Include="AmazeUI-2.4.2\assets\fonts\fontawesome-webfont.woff" />
     <Content Include="AmazeUI-2.4.2\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="AmazeUI-2.4.2\assets\fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\Orange.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -577,7 +578,9 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="sort.html" />
     <Content Include="success.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -624,6 +627,17 @@
     <Content Include="Views\Commodity\top_two.cshtml" />
     <Content Include="Views\Person\left.cshtml" />
     <Content Include="Views\Person\information.cshtml" />
+    <Content Include="Views\Person\saftey.cshtml" />
+    <Content Include="Views\Person\address.cshtml" />
+    <Content Include="Views\Person\order.cshtml" />
+    <Content Include="Views\Person\change.cshtml" />
+    <Content Include="Views\Person\coupon.cshtml" />
+    <Content Include="Views\Person\bonus.cshtml" />
+    <Content Include="Views\Person\bill.cshtml" />
+    <Content Include="Views\Person\collection.cshtml" />
+    <Content Include="Views\Person\foot.cshtml" />
+    <Content Include="Views\Person\comment.cshtml" />
+    <Content Include="Views\Person\news.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
