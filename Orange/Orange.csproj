@@ -622,6 +622,17 @@
     <Content Include="Views\Commodity\top_two.cshtml" />
     <Content Include="Views\Person\left.cshtml" />
     <Content Include="Views\Person\information.cshtml" />
+    <Content Include="Views\Person\saftey.cshtml" />
+    <Content Include="Views\Person\address.cshtml" />
+    <Content Include="Views\Person\order.cshtml" />
+    <Content Include="Views\Person\change.cshtml" />
+    <Content Include="Views\Person\coupon.cshtml" />
+    <Content Include="Views\Person\bonus.cshtml" />
+    <Content Include="Views\Person\bill.cshtml" />
+    <Content Include="Views\Person\collection.cshtml" />
+    <Content Include="Views\Person\foot.cshtml" />
+    <Content Include="Views\Person\comment.cshtml" />
+    <Content Include="Views\Person\news.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
