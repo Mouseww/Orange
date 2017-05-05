@@ -38,6 +38,7 @@ namespace Orange.Models
         public DbSet<Commodity_attribute> Commodity_attribute { get; set; }
         public DbSet<Shopcart> Shopcart { get; set; }
         public DbSet<IMG> IMG { get; set; }
+        public DbSet<Ress> Ress { get; set; }
         public DbSet<Commodity_option1> Commodity_option1 { get; set; }
         public DbSet<Commodity_option2> Commodity_option2 { get; set; }
     }

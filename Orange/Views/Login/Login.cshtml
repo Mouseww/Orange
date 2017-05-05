@@ -14,6 +14,21 @@
         <script>alert('@ViewBag.Result')</script>
         }
     }
+    var flag1 =Request.QueryString["flagzc"];
+    if (flag1 != null)
+    {
+        if (flag1=="ture")
+        {
+
+
+            <script>alert('注册成功')</script>
+        }
+        else
+        {
+
+            <script>alert('注册失败')</script>
+        }
+    }
 }
 
 <!DOCTYPE html>

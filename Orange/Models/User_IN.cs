@@ -10,14 +10,15 @@ namespace Orange.Models
         public string nikename { get; set; }
         public string telephone { get; set; }
         public Gender sex { get; set; }
-         public string birthday { get; set; } 
+         public string birthday { get; set; }
 
-        
+        public string username { get; set; }
+
     }
 
     public enum Gender
     {
-        男 =0,
-      女=1
+        男 =1,
+        女=2
     }
 }

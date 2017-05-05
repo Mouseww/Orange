@@ -10,16 +10,44 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        internal Boolean UpUSer_IN(string name1, string name2, string telephone, string birthday, string sex, string username)
+        {
+                var user_in = db.UsersIN.First(a => a.username==username);
+                user_in.name = name2;
+                user_in.nikename = name1;
+                user_in.birthday = birthday;
+                user_in.telephone = telephone;
+                user_in.sex = (Gender)Enum.Parse(typeof(Gender), sex);
+          int res =db.SaveChanges();
+            if (res == 1) { return true; }
+            return false;
+            
+        }
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         internal Boolean AddUser(string username,string password)
         {
+            User_IN user_in = new User_IN();
+            user_in.username = username;
             
-            User user = new User();
-            user.username = username;
-            user.password = password;
-            db.Users.Add(user);
+            
+            db.UsersIN.Add(user_in);
+            
             int res = db.SaveChanges();
             if (res == 1) {
-             
+                int ID = db.UsersIN.First(a => a.username == username).ID;
+                User user = new User();
+                user.username = username;
+                user.password = password;
+                user.User_IN_Id = ID;
+                db.Users.Add(user);
+                int res1 = db.SaveChanges();
+                if (res1 == 1) { return true; }
+                return false;
             }
             return false;
         }
@@ -50,7 +78,7 @@ namespace Orange
 
 
 
-            return false;
+         
         }
         internal bool DelectShopcartAll(Array arry1)
         { 
@@ -165,7 +193,7 @@ namespace Orange
                     Name=a.Commodity.Name,
                     img=a.Commodity.img,
                     jieshao=a.Commodity.jieshao,
-                 Price=a.Commodity.Price,
+                    Price=a.Commodity.Price,
                 }
             ).ToList();
             return db1;

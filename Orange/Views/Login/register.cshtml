@@ -1,6 +1,12 @@
 ﻿
 @{
     Layout = null;
+    if (ViewBag.flagzc!=null) {
+        if (ViewBag.flagzc)
+        {
+            Response.Redirect("../Login/Login?flagzc=ture");
+        }
+    }
 }
 
 <!DOCTYPE html>

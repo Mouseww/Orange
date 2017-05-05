@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Orange.Controllers
 {
-    public class PersonController : Controller
+    public class PersonController : Controller 
     {
         // GET: Person
         /// <summary>
@@ -111,8 +111,20 @@ namespace Orange.Controllers
         /// 个人信息
         /// </summary>
         /// <returns></returns>
-            public ActionResult information()
+            public ActionResult information(string name1,string name2,string telephone,string birthday,string sex)
         {
+            var user = (VMUser)Session["User"];
+
+            if (user == null)
+            {
+                ViewBag.Result = "请先登录";
+                return View("../Login/Login");
+            }
+            ViewBag.VMUser = user;
+            if (name1!=null)
+            {
+               ViewBag.flag = new biz().UpUSer_IN(name1, name2, telephone, birthday, sex,user.username);
+            }
             return View();
         }
         /// <summary>

@@ -15,7 +15,8 @@ namespace Orange.Controllers
             var flag = new biz().AddUser(email, password);
             if (flag)
             {
-                return View("Login");
+                    ViewBag.flagzc = flag;
+                return View();
             }
         }
             return View();

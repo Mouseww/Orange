@@ -201,6 +201,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IMG.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Ress.cs" />
     <Compile Include="Models\Shopcart.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\User_IN.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="ViewModel\VMCommodity.cs" />
     <Compile Include="ViewModel\VMSoure.cs" />
     <Compile Include="ViewModel\VMUser.cs" />
+    <Compile Include="ViewModel\VMUser_IN.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AmazeUI-2.4.2\assets\css\admin.css" />
