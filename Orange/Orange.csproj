@@ -640,6 +640,8 @@
     <Content Include="Views\Person\foot.cshtml" />
     <Content Include="Views\Person\comment.cshtml" />
     <Content Include="Views\Person\news.cshtml" />
+    <Content Include="Views\Person\password.cshtml" />
+    <Content Include="Views\Person\footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

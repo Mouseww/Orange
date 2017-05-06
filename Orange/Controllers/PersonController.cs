@@ -11,6 +11,33 @@ namespace Orange.Controllers
     public class PersonController : Controller 
     {
         // GET: Person
+       public ActionResult footer()
+        {
+            return View();
+        }
+        public ActionResult password(string oldpsw,string newpsw)
+        {
+            var user = (VMUser)Session["User"];
+
+            if (user == null)
+            {
+                ViewBag.Result = "请先登录";
+                return View("../Login/Login");
+            }
+            if (oldpsw!=null&&newpsw!= null)
+            {
+                var flag = new biz().Uppsw(user.username,oldpsw,newpsw);
+                if (flag)
+                {
+                    ViewBag.msg = "修改成功";
+                }
+                else
+                {
+                    ViewBag.msg = "原密码错误";
+                }
+            }
+            return View();
+        }
         /// <summary>
         /// 安全设置
         /// </summary>
@@ -105,6 +132,7 @@ namespace Orange.Controllers
         /// <returns></returns>
         public ActionResult left()
         {
+           
             return View();
         }
         /// <summary>

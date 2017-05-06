@@ -24,6 +24,25 @@ namespace Orange
             
         }
         /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="oldpsw"></param>
+        /// <param name="newpsw"></param>
+        /// <returns></returns>
+        internal Boolean Uppsw(string username, string oldpsw, string newpsw)
+        {
+            var User = db.Users.First(a => a.username == username && a.password == oldpsw);
+            if (User==null)
+            {
+                return false;
+            }
+            User.password = newpsw;
+            db.SaveChanges();
+            return true;
+        }
+
+        /// <summary>
         /// 注册
         /// </summary>
         /// <param name="username"></param>
@@ -303,7 +322,7 @@ namespace Orange
 
                 }).ToList();
             }
-            return db.Commodity.Where(a => a.Name.Contains(Name) || a.ID.Name.Contains(Name) || a.ID.ID_1.Name.Contains(Name))
+            return db.Commodity.Where(a => a.Name.Contains(Name) || a.ID.Name.Contains(Name) || a.ID.ID_1.Name.Contains(Name)||a.ID.ID_1.ID_1.Type_Name.Contains(Name))
                 .Select(b => new VMSoure
                 {
                     id = b.Id,
