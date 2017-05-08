@@ -11,6 +11,46 @@ namespace Orange.Controllers
     public class IntroductionController : Controller
     {
         /// <summary>
+        /// 订单页
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="Commodity_id"></param>
+        /// <param name="attr"></param>
+        /// <param name="attr2"></param>
+        /// <param name="number"></param>
+        /// <param name="remove_user"></param>
+        /// <param name="img"></param>
+        /// <param name="Commodity_name"></param>
+        /// <returns></returns>
+        public ActionResult Order(int id, string Commodity_id,string op_type,string op_type2, string attr, string attr2, string number, string remove_user,string img,string Commodity_name)
+        {
+            var user = (VMUser)Session["User"];
+            if (user != null) { 
+            if (id != null && Commodity_id != null)
+            {
+                var Commodity = new ShopCars();
+                Commodity.Commodity_id = int.Parse(Commodity_id);
+                Commodity.option1_name = attr;
+                Commodity.option2_name = attr2;
+                Commodity.option2 =op_type2;
+                Commodity.option1 = op_type2;
+                Commodity.Number = int.Parse(number);
+                Commodity.img = img;
+                Commodity.shop_name = Commodity_name;
+                ViewBag.Commodity=Commodity;
+                    var ress = new biz().SelectRess(user.ID);
+                    ViewBag.ress = ress;
+
+            }
+            }
+            else
+            {
+                ViewBag.msg = "请先登录";
+                return View("../Login/Login");
+            }
+            return View();
+        }
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
@@ -19,15 +59,12 @@ namespace Orange.Controllers
         /// <param name="attr2"></param>
         /// <param name="number"></param>
         /// <returns></returns>
-        // GET: Introduction
+            // GET: Introduction
         public ActionResult Index(int id, string Commodity_id, string attr, string attr2, string number,string remove_user)
         {
             var user = (VMUser)Session["User"];
 
-            if (remove_user == "1")//如果点击了注销，退出登录状态
-            {
-                Session["User"] = null;
-            }
+          
 
             if (Commodity_id != null)
             {
@@ -55,62 +92,7 @@ namespace Orange.Controllers
             var attr_option1 = new biz().show_option1(id);
 
             var attr_option2 = new biz().show_option2(id);
-            //var attribute = new biz().show(id);
-            //var attribute1 = new List<Commodity_attribute>();
-            //var attribute2 = new biz().show(id);
-            //var attribute3 = new List<Commodity_attribute>();
-
-            //for (int i = 0; i < attribute.Count; i++)//遍历数组成员
-            //{
-            //    for(int j =i+1; j<attribute.Count; j++)
-            //    {
-            //        if (attribute[j] !=null && attribute[i]!=null&&attribute[i].Commodity_option2.option == attribute[j].Commodity_option2.option)
-            //        {
-            //            attribute[i] = null;
-
-
-            //            if (i ==attribute.Count-1)
-            //            {
-            //                break;
-            //            }
-            //            continue;
-            //        }
-            //    }
-
-            //}
-            //for (int i = 0; i < attribute.Count; i++)
-            //{
-            //    if (attribute[i] != null)
-            //    {
-            //        attribute1.Add(attribute[i]);
-            //    }
-            //}
-            ////选项1
-            //for (int i = 0; i < attribute2.Count; i++)//遍历数组成员
-            //{
-            //    for (int j = i + 1; j < attribute2.Count; j++)
-            //    {
-            //        if (attribute2[j] != null && attribute2[i] != null && attribute2[i].Commodity_option1.option == attribute2[j].Commodity_option1.option)
-            //        {
-            //            attribute2[i] = null;
-
-
-            //            if (i == attribute2.Count - 1)
-            //            {
-            //                break;
-            //            }
-            //            continue;
-            //        }
-            //    }
-
-            //}
-            //for (int i = 0; i < attribute2.Count; i++)
-            //{
-            //    if (attribute2[i] != null)
-            //    {
-            //        attribute3.Add(attribute2[i]);
-            //    }
-            //}
+          
             ViewBag.attr = attr_option2;
             ViewBag.attribute = attr_option1;
             return View();

@@ -52,22 +52,12 @@
     <div class="listMain">
 
         <!--分类-->
-        <div class="nav-table">
-            <div class="long-title"><span class="all-goods">全部分类</span></div>
-            <div class="nav-cont">
-                <ul>
-                    <li class="index"><a href="#">首页</a></li>
-                    <li class="qc"><a href="#">闪购</a></li>
-                    <li class="qc"><a href="#">限时抢</a></li>
-                    <li class="qc"><a href="#">团购</a></li>
-                    <li class="qc last"><a href="#">大包装</a></li>
-                </ul>
-                <div class="nav-extra">
-                    <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-                    <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-                </div>
-            </div>
+        <div id="top_two" class="nav-table">
+            <script>
+    $('#top_two').load('../Commodity/top_two')
+            </script>
         </div>
+        <b class="line"></b>
         <ol class="am-breadcrumb am-breadcrumb-slash">
             <li><a href="#">首页</a></li>
             <li><a href="#">分类</a></li>
@@ -255,10 +245,11 @@
 
                                                        $(document).ready(function() {$('#attribute_@attribute.Id').toggle(function () {
                                                            attr_id1 = "@attribute.Id";
-                                                           
+                                                           attr_name1 = "@attribute.option";
 
                                                        }, function () {
                                                            attr_id1 = null;
+                                                           attr_name1 = null;
                                                        })
                                                        })
                                                    </script>
@@ -277,9 +268,11 @@
 
                                                         $(document).ready(function(){$('#attr_@attr.Id').toggle(function () {
                                                             attr_id2 = "@attr.Id";
+                                                            attr_name2 = "@attr.option";
                                                         },
                                                         function () {
                                                             attr_id2 = null;
+                                                            attr_name2 = null;
                                                         }
                                                         )
                                                         })
@@ -398,7 +391,16 @@
             else {
                 alert("请先选择商品属性");
             }
-            })
+        })
+        $('a#LikBuy').click(function () {
+            if (attr_id1 != null && attr_id2 != null) {
+                var number = $('#text_box').val();
+                document.location.href = "../Introduction/Order?id=@ViewBag.Introduction.Id&&Commodity_id=@ViewBag.Introduction.Id&&op_type=@ViewBag.attribute[0].type_name&&op_type2=@ViewBag.attr[0].type_name&&attr=" + attr_name1 + "&&attr2=" + attr_name2 + "&&number=" + number + "&&img=@ViewBag.Introduction.img" + "&&Commodity_name=@ViewBag.Introduction.Name";
+            }
+            else {
+                alert("请先选择商品属性");
+            }
+        })
       
 
     </script>

@@ -41,6 +41,7 @@ namespace Orange.Models
         public DbSet<Ress> Ress { get; set; }
         public DbSet<Commodity_option1> Commodity_option1 { get; set; }
         public DbSet<Commodity_option2> Commodity_option2 { get; set; }
+        public DbSet<Order> Order { get; set; }
     }
     
 }

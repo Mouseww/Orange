@@ -10,6 +10,20 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        internal List<Ress> SelectRess(int id)
+        {
+            return db.Ress.Where(a => a.User.ID == id).ToList();
+        }
+        /// <summary>
+        /// 修改用户信息
+        /// </summary>
+        /// <param name="name1"></param>
+        /// <param name="name2"></param>
+        /// <param name="telephone"></param>
+        /// <param name="birthday"></param>
+        /// <param name="sex"></param>
+        /// <param name="username"></param>
+        /// <returns></returns>
         internal Boolean UpUSer_IN(string name1, string name2, string telephone, string birthday, string sex, string username)
         {
                 var user_in = db.UsersIN.First(a => a.username==username);
@@ -246,7 +260,8 @@ namespace Orange
                 telephone=a.User_IN.telephone,
                 username=a.username,
                 password=a.password,
-                nikename=a.User_IN.nikename
+                nikename=a.User_IN.nikename,
+                ID=a.ID
                 })
                 .ToList();
         }

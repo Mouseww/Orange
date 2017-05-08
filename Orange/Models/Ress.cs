@@ -11,5 +11,8 @@ namespace Orange.Models
         public string xiangxi { get; set; }
 
         public User User { get; set; }
+        public string telephone { get; set; }
+        public string name { get; set; }
+        public string moren { get; set; }
     }
 }
