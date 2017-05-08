@@ -27,6 +27,7 @@ namespace Orange.Controllers
             if (oldpsw!=null&&newpsw!= null)
             {
                 var flag = new biz().Uppsw(user.username,oldpsw,newpsw);
+
                 if (flag)
                 {
                     ViewBag.msg = "修改成功";
@@ -152,6 +153,8 @@ namespace Orange.Controllers
             if (name1!=null)
             {
                ViewBag.flag = new biz().UpUSer_IN(name1, name2, telephone, birthday, sex,user.username);
+                Session["User"] = new biz().refresh(user.username);
+                ViewBag.VMUser = (VMUser)Session["User"];
             }
             return View();
         }

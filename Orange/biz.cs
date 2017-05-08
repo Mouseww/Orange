@@ -245,6 +245,22 @@ namespace Orange
             
             return db.Commodity.ToList();
         }
+        internal VMUser refresh(string username)
+        {
+            return db.Users.Where(a => a.username ==username )
+                .Select(a=>new VMUser
+            {
+                name = a.User_IN.name,
+                birthday = a.User_IN.birthday,
+                sex = a.User_IN.sex.ToString(),
+                telephone = a.User_IN.telephone,
+                username = a.username,
+                password = a.password,
+                nikename = a.User_IN.nikename,
+                ID = a.ID
+                })
+                .ToList()[0];
+        }
         /// <summary>
         /// 登录验证
         /// </summary>
