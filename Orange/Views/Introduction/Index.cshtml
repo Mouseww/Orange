@@ -220,6 +220,8 @@
                             <script>
                                 var attr_id1 = null;
                                 var attr_id2 = null;
+                                var click_id = null;
+                                var click_id2 = null;
                             </script>
                             <div class="theme-popover-mask"></div>
 
@@ -243,8 +245,11 @@
                                                     <li id="attribute_@attribute.Id" class="sku-line">@attribute.option<i></i></li>
                                                     <script>
 
-                                                        $(document).ready(function () {
-                                                            $('#attribute_@attribute.Id').toggle(function () {
+                                                        $('#attribute_@attribute.Id').toggle(function () {
+                                                            if (click_id != null) {
+                                                                $('#attribute_' + click_id).click();
+                                                            }
+                                                            click_id = "@attribute.Id";
                                                                 attr_id1 = "@attribute.Id";
                                                                 attr_name1 = "@attribute.option";
 
@@ -252,7 +257,7 @@
                                                                 attr_id1 = null;
                                                                 attr_name1 = null;
                                                             })
-                                                        })
+                                                       
                                                     </script>
 
 
@@ -268,8 +273,12 @@
                                                     <li id="attr_@attr.Id" class="sku-line">@attr.option<i></i></li>
                                                     <script>
 
-                                                        $(document).ready(function () {
-                                                            $('#attr_@attr.Id').toggle(function () {
+                                                       
+                                                        $('#attr_@attr.Id').toggle(function () {
+                                                            if (click_id2 != null) {
+                                                                $('#attr_' + click_id2).click();
+                                                            }
+                                                            click_id2 = "@attr.Id";
                                                                 attr_id2 = "@attr.Id";
                                                                 attr_name2 = "@attr.option";
                                                             },
@@ -278,7 +287,7 @@
                                                                 attr_name2 = null;
                                                             }
                                                             )
-                                                        })
+                                                       
                                                     </script>
                                                     }
                                                 </ul>
@@ -325,7 +334,9 @@
         $(".sku-line").click(
             function () {
                 if (attr_id1 == null || attr_id2 == null) {
-                } else {
+                    return;
+                }
+                else {
                     
                     $.post("ChangePrice", { "kouwei": attr_id1, "guige": attr_id2 }, function (data) {
                         $(".sys_item_price").text(data.Price);
