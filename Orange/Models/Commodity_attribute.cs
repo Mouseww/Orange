@@ -13,5 +13,6 @@ namespace Orange.Models
         public Commodity_option2 Commodity_option2 { get; set; }
 
         public double Price { get; set; }
+        public double Price_old { get; set; }
     }
 }

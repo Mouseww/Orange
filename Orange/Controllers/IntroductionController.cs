@@ -106,6 +106,7 @@ namespace Orange.Controllers
             int attr_option2 = int.Parse(guige);
             var price1 = new biz().bizChangePrice(attr_option1, attr_option2);
             var price = price1[0];
+    
             return Json(price, JsonRequestBehavior.AllowGet);
 
 
