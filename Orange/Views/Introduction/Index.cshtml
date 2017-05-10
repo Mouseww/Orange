@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 @{var user = (Orange.ViewModel.VMUser)Session["User"];  }
@@ -31,9 +30,9 @@
 </head>
 @if (msg != null)
 {
-    <script>
-        alert('@msg');
-    </script>
+<script>
+    alert('@msg');
+</script>
 
 }
 
@@ -43,7 +42,7 @@
     <!--顶部导航条 -->
     <div id="top">
         <script>
-          $('#top').load('../Commodity/top')
+            $('#top').load('../Commodity/top')
         </script>
     </div>
 
@@ -54,7 +53,7 @@
         <!--分类-->
         <div id="top_two" class="nav-table">
             <script>
-    $('#top_two').load('../Commodity/top_two')
+                $('#top_two').load('../Commodity/top_two')
             </script>
         </div>
         <b class="line"></b>
@@ -64,15 +63,15 @@
             <li class="am-active">内容</li>
         </ol>
         <script type="text/javascript">
-					$(function() {});
-					$(window).load(function() {
-						$('.flexslider').flexslider({
-							animation: "slide",
-							start: function(slider) {
-								$('body').removeClass('loading');
-							}
-						});
-					});
+            $(function () { });
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function (slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
         </script>
         <div class="scoll">
             <section class="slider">
@@ -99,14 +98,14 @@
 
                 <div class="box">
                     <script type="text/javascript">
-								$(document).ready(function() {
-									$(".jqzoom").imagezoom();
-									$("#thumblist li a").click(function() {
-										$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
-										$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
-										$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
-									});
-								});
+                        $(document).ready(function () {
+                            $(".jqzoom").imagezoom();
+                            $("#thumblist li a").click(function () {
+                                $(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+                                $(".jqzoom").attr('src', $(this).find("img").attr("mid"));
+                                $(".jqzoom").attr('rel', $(this).find("img").attr("big"));
+                            });
+                        });
                     </script>
 
                     <div class="tb-booth tb-pic tb-s310">
@@ -118,35 +117,36 @@
                                 <a href="#"><img src="@ViewBag.Introduction.img" mid="@ViewBag.Introduction.img" big="@ViewBag.Introduction.img"></a>
                             </div>
                         </li>
-                        
+
                     </ul>
                 </div>
 
                 <div class="clear"></div>
             </div>
-            @*<script>
-                $(document).ready(function () {
-                    $.getJSON("/Commodity/Ajax1", {
-                        "id":@ViewBag.Introduction.Id },
-                        function(data){
-                           
-                            $.each(data,function(index,el){
-                                
-                                var a1=$('#sku1').text();
-                                if(a1==null&&a1==""){
-                                    $('#sku1').text(el.option2+"<i></i>");
-                                   a1=$('#sku1').text();
-                                }
-                                if(el.option2!=a1){
-                                    $('#sku1').after("<li  class='sku-line'>"+el.option2+"<i></i></li>")
-                                }
-                                
-                            }
-                                )
-                        }
-                        )
+            @*
+            <script>
+                    $(document).ready(function () {
+                        $.getJSON("/Commodity/Ajax1", {
+                            "id":@ViewBag.Introduction.Id },
+                            function(data){
 
-                });
+                                $.each(data,function(index,el){
+
+                                    var a1=$('#sku1').text();
+                                    if(a1==null&&a1==""){
+                                        $('#sku1').text(el.option2+"<i></i>");
+                                       a1=$('#sku1').text();
+                                    }
+                                    if(el.option2!=a1){
+                                        $('#sku1').after("<li  class='sku-line'>"+el.option2+"<i></i></li>")
+                                    }
+
+                                }
+                                    )
+                            }
+                            )
+
+                    });
             </script>*@
             <div class="clearfixRight">
 
@@ -154,7 +154,7 @@
                 <!--名称-->
                 <div class="tb-detail-hd">
                     <h1>
-                       @ViewBag.Introduction.Name
+                        @ViewBag.Introduction.Name
                     </h1>
                 </div>
                 <div class="tb-detail-list">
@@ -209,7 +209,7 @@
                             <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span></div>
                         </li>
                     </ul>
-                    
+
                     <div class="clear"></div>
 
                     <!--各种规格-->
@@ -238,22 +238,23 @@
                                                 <ul>
                                                     @foreach (var attribute in ViewBag.attribute)
                                                     {
-                                                        
-                                                        
+
+
                                                     <li id="attribute_@attribute.Id" class="sku-line">@attribute.option<i></i></li>
-                                                   <script>
+                                                    <script>
 
-                                                       $(document).ready(function() {$('#attribute_@attribute.Id').toggle(function () {
-                                                           attr_id1 = "@attribute.Id";
-                                                           attr_name1 = "@attribute.option";
+                                                        $(document).ready(function () {
+                                                            $('#attribute_@attribute.Id').toggle(function () {
+                                                                attr_id1 = "@attribute.Id";
+                                                                attr_name1 = "@attribute.option";
 
-                                                       }, function () {
-                                                           attr_id1 = null;
-                                                           attr_name1 = null;
-                                                       })
-                                                       })
-                                                   </script>
-                                                        
+                                                            }, function () {
+                                                                attr_id1 = null;
+                                                                attr_name1 = null;
+                                                            })
+                                                        })
+                                                    </script>
+
 
 
                                                     }
@@ -262,39 +263,41 @@
                                             <div class="theme-options">
                                                 <div id="cart-title2" class="cart-title">@ViewBag.attr[0].type_name</div>
                                                 <ul>
-                                                    @foreach (var attr in ViewBag.attr) {
+                                                    @foreach (var attr in ViewBag.attr)
+                                                    {
                                                     <li id="attr_@attr.Id" class="sku-line">@attr.option<i></i></li>
                                                     <script>
 
-                                                        $(document).ready(function(){$('#attr_@attr.Id').toggle(function () {
-                                                            attr_id2 = "@attr.Id";
-                                                            attr_name2 = "@attr.option";
-                                                        },
-                                                        function () {
-                                                            attr_id2 = null;
-                                                            attr_name2 = null;
-                                                        }
-                                                        )
+                                                        $(document).ready(function () {
+                                                            $('#attr_@attr.Id').toggle(function () {
+                                                                attr_id2 = "@attr.Id";
+                                                                attr_name2 = "@attr.option";
+                                                            },
+                                                            function () {
+                                                                attr_id2 = null;
+                                                                attr_name2 = null;
+                                                            }
+                                                            )
                                                         })
-                                                            </script>
-}
+                                                    </script>
+                                                    }
                                                 </ul>
                                             </div>
                                             <div class="theme-options">
-                                                 <div class="cart-title number">数量</div>
+                                                <div class="cart-title number">数量</div>
                         <dd>
                             <input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-                            
+
                             <input id="text_box" name="text_box" type="text" value="1" style="width:30px;" />
                             <input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
-                            <span id="Stock" class="tb-hidden">库存<span class="stock">@ViewBag.Introduction.Number</span>件</span>
+                            <span id="Stock" class="tb-hidden">库存<span class="kucun stock">@ViewBag.Introduction.Number</span>件</span>
                         </dd>
 
                 </div>
                 <div class="clear"></div>
-               <script>
-                   $.ajax
-               </script>
+                <script>
+                    $.ajax
+                </script>
                 <div class="btn-op">
                     <div class="btn am-btn am-btn-warning">确认</div>
                     <div class="btn close am-btn am-btn-warning">取消</div>
@@ -317,13 +320,32 @@
 
     </dd>
     </dl>
+    @* 改变价格 *@
+    <script>
+        $(".sku-line").click(
+            function () {
+                if (attr_id1 == null || attr_id2 == null) {
+                } else {
+                    
+                    $.post("ChangePrice", { "kouwei": attr_id1, "guige": attr_id2 }, function (data) {
+                        $(".sys_item_price").text(data.Price);
+                        $(".kucun").text(data.Number);
+
+                    }
+        );
+                }
+            }
+        )
+
+    </script>
+
 
     <script>
-        
-        
+
+
         $('#cart-title1 .sku_line').click(function () {
-            for(var i=0;i<attrlist2.Count;i++){
-                if(attr_id1==attrlist2.option2){
+            for (var i = 0; i < attrlist2.Count; i++) {
+                if (attr_id1 == attrlist2.option2) {
 
                 }
             }
@@ -363,10 +385,10 @@
                 <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
             </div>
         </li>
-     
+
         <li>
             <div class="clearfix tb-btn tb-btn-basket theme-login">
-                <a id="LikBasket11" title="加入购物车" ><i></i>加入购物车</a>
+                <a id="LikBasket11" title="加入购物车"><i></i>加入购物车</a>
             </div>
         </li>
     </div>
@@ -375,14 +397,14 @@
     <script>
         //$('#add').click(function () {
         //    var va = Number(document.getElementById("text_box").value);
-           
+
         //})
         //$('#min').click(function () {
         //    var va = Number(document.getElementById("text_box").value);
         //    $('#text_box').attr('value', va);
         //})
- 
-         //   var number=$('#text_box').value();
+
+        //   var number=$('#text_box').value();
         $('a#LikBasket11').click(function () {
             if (attr_id1 != null && attr_id2 != null) {
                 var number = $('#text_box').val();
@@ -401,7 +423,7 @@
                 alert("请先选择商品属性");
             }
         })
-      
+
 
     </script>
     <div class="clear"></div>
@@ -1269,12 +1291,12 @@
         </div>
 
     </div>
-    
-   <div id="right">
-       <script>
+
+    <div id="right">
+        <script>
             $('#right').load('../Commodity/right')
-       </script>
-   </div>
+        </script>
+    </div>
 </body>
 
 </html>

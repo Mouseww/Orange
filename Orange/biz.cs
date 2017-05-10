@@ -383,5 +383,13 @@ namespace Orange
 
                 }).ToList();
         }
+
+
+        internal IList<Commodity_attribute> bizChangePrice(int attr_option1, int attr_option2)
+        {
+            var price = db.Commodity_attribute.Where(a => a.Commodity_option1.Id == attr_option1 && a.Commodity_option2.Id == attr_option2).ToList();
+           
+            return price;
+        }
     }
 }
