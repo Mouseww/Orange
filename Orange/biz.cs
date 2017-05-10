@@ -10,6 +10,25 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        internal bool UpRess(int id)
+        {
+            var ress = db.Ress.First(a => a.moren == "1");
+            ress.moren = "2";
+            var res = db.SaveChanges();
+            if (res > 0)
+            {
+                var ress1 = db.Ress.First(b => b.id == id);
+                ress1.moren = "1";
+                var res1 = db.SaveChanges();
+                if (res1 > 0) { return true; }
+            }
+            return false;
+        }
+        /// <summary>
+        /// 查询地址
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         internal List<Ress> SelectRess(int id)
         {
             return db.Ress.Where(a => a.User.ID == id).ToList();

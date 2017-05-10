@@ -644,6 +644,7 @@
     <Content Include="Views\Person\password.cshtml" />
     <Content Include="Views\Person\footer.cshtml" />
     <Content Include="Views\Introduction\Order.cshtml" />
+    <Content Include="Views\Person\index_f.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

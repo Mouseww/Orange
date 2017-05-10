@@ -1,4 +1,4 @@
-﻿
+﻿@using Orange.Models;
 @{
     Layout = null;
 }
@@ -56,42 +56,45 @@
                     </div>
                     <hr />
                     <ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails">
-
-                        <li class="user-addresslist defaultAddr">
-                            <span class="new-option-r"><i class="am-icon-check-circle"></i>默认地址</span>
-                            <p class="new-tit new-p-re">
-                                <span class="new-txt">小叮当</span>
-                                <span class="new-txt-rd2">159****1622</span>
-                            </p>
-                            <div class="new-mu_l2a new-p-re">
-                                <p class="new-mu_l2cw">
-                                    <span class="title">地址：</span>
-                                    <span class="province">湖北</span>省
-                                    <span class="city">武汉</span>市
-                                    <span class="dist">洪山</span>区
-                                    <span class="street">雄楚大道666号(中南财经政法大学)</span>
+                        @foreach (var ressfirst in ((List<Ress>)ViewBag.ress).Where(a => a.moren == "1").Distinct())
+                        {
+                            <li class="user-addresslist user-addresslist defaultAddr">
+                                <span class="new-option-r" id="@ressfirst.id"><i class="am-icon-check-circle"></i>设为默认</span>
+                                <p class="new-tit new-p-re">
+                                    <span class="new-txt">@ressfirst.name</span>
+                                    <span class="new-txt-rd2">@ressfirst.telephone</span>
                                 </p>
-                            </div>
-                            <div class="new-addr-btn">
-                                <a href="#"><i class="am-icon-edit"></i>编辑</a>
-                                <span class="new-addr-bar">|</span>
-                                <a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-                            </div>
-                        </li>
-
+                                <div class="new-mu_l2a new-p-re">
+                                    <p class="new-mu_l2cw">
+                                        <span class="title">地址：</span>
+                                        <span class="province">@ressfirst.Province</span>省
+                                        <span class="city">@ressfirst.City</span>市
+                                        <span class="dist">@ressfirst.Township</span>区
+                                        <span class="street">@ressfirst.xiangxi</span>
+                                    </p>
+                                </div>
+                                <div class="new-addr-btn">
+                                    <a href="#"><i class="am-icon-edit"></i>编辑</a>
+                                    <span class="new-addr-bar">|</span>
+                                    <a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
+                                </div>
+                            </li>
+                        }
+@foreach (var ressfirst in ((List<Ress>)ViewBag.ress).Where(a => a.moren == "2").Distinct())
+{
                         <li class="user-addresslist">
-                            <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
+                            <span class="new-option-r" id="@ressfirst.id"><i class="am-icon-check-circle"></i>设为默认</span>
                             <p class="new-tit new-p-re">
-                                <span class="new-txt">小叮当</span>
-                                <span class="new-txt-rd2">159****1622</span>
+                                <span class="new-txt">@ressfirst.name</span>
+                                <span class="new-txt-rd2">@ressfirst.telephone</span>
                             </p>
                             <div class="new-mu_l2a new-p-re">
                                 <p class="new-mu_l2cw">
                                     <span class="title">地址：</span>
-                                    <span class="province">湖北</span>省
-                                    <span class="city">武汉</span>市
-                                    <span class="dist">洪山</span>区
-                                    <span class="street">雄楚大道666号(中南财经政法大学)</span>
+                                    <span class="province">@ressfirst.Province</span>省
+                                    <span class="city">@ressfirst.City</span>市
+                                    <span class="dist">@ressfirst.Township</span>区
+                                    <span class="street">@ressfirst.xiangxi</span>
                                 </p>
                             </div>
                             <div class="new-addr-btn">
@@ -100,27 +103,8 @@
                                 <a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
                             </div>
                         </li>
-                        <li class="user-addresslist">
-                            <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
-                            <p class="new-tit new-p-re">
-                                <span class="new-txt">小叮当</span>
-                                <span class="new-txt-rd2">159****1622</span>
-                            </p>
-                            <div class="new-mu_l2a new-p-re">
-                                <p class="new-mu_l2cw">
-                                    <span class="title">地址：</span>
-                                    <span class="province">湖北</span>省
-                                    <span class="city">武汉</span>市
-                                    <span class="dist">洪山</span>区
-                                    <span class="street">雄楚大道666号(中南财经政法大学)</span>
-                                </p>
-                            </div>
-                            <div class="new-addr-btn">
-                                <a href="#"><i class="am-icon-edit"></i>编辑</a>
-                                <span class="new-addr-bar">|</span>
-                                <a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-                            </div>
-                        </li>
+}
+                        
                     </ul>
                     <div class="clear"></div>
                     <a class="new-abtn-type" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0}">添加新地址</a>
@@ -194,8 +178,24 @@
 
                 <script type="text/javascript">
 						$(document).ready(function() {
-							$(".new-option-r").click(function() {
-								$(this).parent('.user-addresslist').addClass("defaultAddr").siblings().removeClass("defaultAddr");
+						    $(".new-option-r").click(function () {
+						        var Id = $(this).attr('id');
+							    $(this).parent('.user-addresslist').addClass("defaultAddr").siblings().removeClass("defaultAddr");
+							    
+							    $.post('/person/address_ajax', { "id": Id }, function (data) {
+
+
+							    });
+							    //$.ajax({
+							    //    type: "POST",
+							    //    url: "address_ajax",
+							    //    data: { "id": Id},
+							    //    dataType: "JSON",
+							    //    success: function (data) {
+							            
+							           
+							    //    }
+							    //});
 							});
 
 							var $ww = $(window).width();

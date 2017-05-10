@@ -10,6 +10,10 @@ namespace Orange.Controllers
 {
     public class PersonController : Controller 
     {
+        public ActionResult index_f()
+        {
+            return View();
+        }
         // GET: Person
        public ActionResult footer()
         {
@@ -125,6 +129,9 @@ namespace Orange.Controllers
         /// <returns></returns>
         public ActionResult address()
         {
+            var user = (VMUser)Session["User"];
+            var ress = new biz().SelectRess(user.ID);
+            ViewBag.ress = ress;
             return View();
         }
         /// <summary>
@@ -162,16 +169,25 @@ namespace Orange.Controllers
         /// 个人中心主页
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public ActionResult Index(string Id)
         {
             var user = (VMUser)Session["User"];
-
+            if (Id == null)
+            {
+                Id = "1";
+            }
+            ViewBag.ID = Id;
             if (user == null)
             {
                 ViewBag.Result = "请先登录";
                 return View("../Login/Login");
             }
             return View();
+        }
+        public ActionResult address_ajax(string id)
+        {
+            var flag = new biz().UpRess(int.Parse(id));
+            return Json(flag);
         }
     }
 }
