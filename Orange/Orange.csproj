@@ -270,6 +270,7 @@
     <Content Include="Content\dlstyle.css" />
     <Content Include="Content\footstyle.css" />
     <Content Include="Content\hmstyle.css" />
+    <Content Include="Content\images\zlxg2.jpg" />
     <Content Include="Content\infstyle.css" />
     <Content Include="Content\jsstyle.css" />
     <Content Include="Content\lostyle.css" />
@@ -277,6 +278,7 @@
     <Content Include="Content\optstyle.css" />
     <Content Include="Content\orstyle.css" />
     <Content Include="Content\personal.css" />
+    <Content Include="Content\personDate\address.css" />
     <Content Include="Content\personDate\images\date_bg.png" />
     <Content Include="Content\personDate\lyz.calendar.css" />
     <Content Include="Content\point.css" />
@@ -520,6 +522,7 @@
     <Content Include="images\youzi.jpg" />
     <Content Include="images\YXARdXxj5.png" />
     <Content Include="images\zhifubao.jpg" />
+    <Content Include="images\zlxg2.jpg" />
     <Content Include="images\图标.png" />
     <Content Include="layer\layer.js" />
     <Content Include="layer\mobile\layer.js" />
@@ -567,6 +570,7 @@
     <Content Include="AmazeUI-2.4.2\assets\fonts\fontawesome-webfont.woff" />
     <Content Include="AmazeUI-2.4.2\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="AmazeUI-2.4.2\assets\fonts\FontAwesome.otf" />
+    <Content Include="images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\Orange.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\editTool.js" />
@@ -583,6 +587,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\list.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\personDate\address.js" />
+    <Content Include="Scripts\personDate\jquery-1.7.2.min.js" />
     <Content Include="Scripts\personDate\jquery123.js" />
     <Content Include="Scripts\personDate\lyz.calendar.min.js" />
     <Content Include="Scripts\respond.js" />
