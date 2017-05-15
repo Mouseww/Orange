@@ -21,6 +21,15 @@
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
     <script src="../layer/layer.js"></script>
+    <link href="../Content/personDate/address.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/personDate/jquery-1.7.2.min.js"></script>
+    <script src="../Scripts/personDate/address.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#sjld").sjld("#shenfen", "#chengshi", "#quyu");
+        });
+    </script>
+
 </head>
 
 <body>
@@ -164,20 +173,34 @@
                                     </div>
                                     <div class="am-form-group">
                                         <label for="user-address" class="am-form-label">所在地</label>
-                                        <div class="am-form-content address">
-                                            <select data-am-selected>
-                                                <option value="a">浙江省</option>
-                                                <option value="b" selected>湖北省</option>
-                                            </select>
-                                            <select data-am-selected>
-                                                <option value="a">温州市</option>
-                                                <option value="b" selected>武汉市</option>
-                                            </select>
-                                            <select data-am-selected>
-                                                <option value="a">瑞安区</option>
-                                                <option value="b" selected>洪山区</option>
-                                            </select>
+                                   
+                                        <div id="sjld" class="am-form-content address" style="width:520px;margin:-13px;position:relative;z-index:100;left:0.8%">
+                                            <div class="m_zlxg" id="shenfen">
+                                                <p title="">选择省份</p>
+                                                <div class="m_zlxg2">
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                            <div class="m_zlxg" id="chengshi">
+                                                <p title="">选择城市</p>
+                                                <div class="m_zlxg2">
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                            <div class="m_zlxg" id="quyu">
+                                                <p title="">选择区域</p>
+                                                <div class="m_zlxg2">
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                            <input id="sfdq_num" type="hidden" value="" />
+                                            <input id="csdq_num" type="hidden" value="" />
+                                            <input id="sfdq_tj" type="hidden" value="" />
+                                            <input id="csdq_tj" type="hidden" value="" />
+                                            <input id="qydq_tj" type="hidden" value="" />
                                         </div>
+
+
                                     </div>
 
                                     <div class="am-form-group">
