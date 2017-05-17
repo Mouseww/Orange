@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Orange.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Orange.Controllers
@@ -62,5 +65,29 @@ namespace Orange.Controllers
             //.........
             return Json(new { suc = isOk, msg = msg });
         }
-    }
+
+        public ActionResult dropzone(HttpPostedFileBase file)
+        {
+
+            if (file == null)
+            {
+                return Content("没有文件！", "text/plain");
+            }
+            var fileName = Path.Combine(Request.MapPath("../images"), Path.GetFileName(file.FileName));
+            ViewBag.filepath = Path.GetFileName(file.FileName);
+            try
+            {
+                file.SaveAs(fileName);
+                //tm.AttachmentPath = fileName;//得到全部model信息
+
+                return View("上传成功 ！", "text/plain");
+            }
+            catch
+            {
+                return Content("上传异常 ！", "text/plain");
+            }
+        }
+      
+        }
+    
 }

@@ -5,8 +5,8 @@
 
 
 
-
-
+<script src="../assets/js/dropzone.min.js"></script>
+<link rel="stylesheet" href="../assets/css/dropzone.css" />
                     <div class="row">
 
                         <div class="col-xs-12">
@@ -79,7 +79,7 @@
 
                                                             <span class="step">3</span>
 
-                                                            <span class="title">图片上传</span>
+                                                            <span class="title">商品选项</span>
 
                                                         </li>
 
@@ -89,7 +89,7 @@
 
                                                             <span class="step">4</span>
 
-                                                            <span class="title">商品选项</span>
+                                                            <span class="title">图片上传</span>
 
                                                         </li>
 
@@ -121,7 +121,7 @@
 
                                                                     <span class="block input-icon input-icon-right">
 
-                                                                        <input type="text" id="inputInfo" class="width-100" />
+                                                                        <input type="text" id="inputInfo0" class="width-100" />
 
                                                                         <i class="icon-info-sign"></i>
 
@@ -142,8 +142,18 @@
 
                                                                     <span class="block input-icon input-icon-right">
 
-                                                                        <input type="text" id="inputInfo" class="width-100" />
+                                                                        <select >
 
+                                                                            <option >蛋糕/甜品</option>
+                                                                        </select>
+                                                                        <select>
+
+                                                                            <option>甜品</option>
+                                                                        </select>
+                                                                        <select >
+
+                                                                            <option>布丁</option>
+                                                                        </select>
                                                                         <i class="icon-info-sign"></i>
 
                                                                     </span>
@@ -164,7 +174,7 @@
 
                                                                     <span class="block input-icon input-icon-right">
 
-                                                                        <textarea type="text" id="inputInfo" style="height:160px" class="width-100" />
+                                                                        <textarea type="text" id="inputInfo2" style="height:160px" class="width-100" />
 
                                                                         <i class="icon-info-sign"></i>
 
@@ -188,118 +198,179 @@
 
 
                                                     <div class="step-pane" id="step2">
+                                                        <form class="form-horizontal" id="sample-form2">
+                                                            <div class="form-group has-info">
 
-                                                        <div class="row-fluid">
-
-                                                            <div class="alert alert-success">
-
-                                                                <button type="button" class="close" data-dismiss="alert">
-
-                                                                    <i class="icon-remove"></i>
-
-                                                                </button>
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">生产公司</label>
 
 
 
-                                                                <strong>
+                                                                <div class="col-xs-12 col-sm-5">
 
-                                                                    <i class="icon-ok"></i>
+                                                                    <span class="block input-icon input-icon-right">
 
-                                                                    Well done!
+                                                                        <input type="text" class="width-100" />
 
-                                                                </strong>
+                                                                        <i class="icon-info-sign"></i>
+
+                                                                    </span>
+
+                                                                </div>
+
+                                                                <div class="help-block col-xs-12 col-sm-reset inline"> Info tip help! </div>
+
+                                                            </div>
+                                                            <div class="form-group has-info">
+
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">产品类型</label>
 
 
 
-                                                                You successfully read this important alert message.
+                                                                <div class="col-xs-12 col-sm-5">
 
-                                                                <br />
+                                                                    <span class="block input-icon input-icon-right">
+
+                                                                        <input type="text" class="width-100" />
+
+                                                                        <i class="icon-info-sign"></i>
+
+                                                                    </span>
+
+                                                                </div>
+
+                                                                <div class="help-block col-xs-12 col-sm-reset inline"> Info tip help! </div>
+
+                                                            </div>
+                                                            <div class="form-group has-info">
+
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">品牌</label>
+
+
+
+                                                                <div class="col-xs-12 col-sm-5">
+
+                                                                    <span class="block input-icon input-icon-right">
+
+                                                                        <input type="text" class="width-100" />
+
+                                                                        <i class="icon-info-sign"></i>
+
+                                                                    </span>
+
+                                                                </div>
+
+                                                                <div class="help-block col-xs-12 col-sm-reset inline"> Info tip help! </div>
 
                                                             </div>
 
+                                                            <div class="form-group has-info">
 
-
-                                                            <div class="alert alert-danger">
-
-                                                                <button type="button" class="close" data-dismiss="alert">
-
-                                                                    <i class="icon-remove"></i>
-
-                                                                </button>
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">食用方式</label>
 
 
 
-                                                                <strong>
+                                                                <div class="col-xs-12 col-sm-5">
 
-                                                                    <i class="icon-remove"></i>
+                                                                    <span class="block input-icon input-icon-right">
 
-                                                                    Oh snap!
+                                                                        <input type="text" class="width-100" />
 
-                                                                </strong>
+                                                                        <i class="icon-info-sign"></i>
 
+                                                                    </span>
 
+                                                                </div>
 
-                                                                Change a few things up and try submitting again.
-
-                                                                <br />
+                                                                <div class="help-block col-xs-12 col-sm-reset inline"> Info tip help! </div>
 
                                                             </div>
 
+                                                            <div class="form-group has-info">
 
-
-                                                            <div class="alert alert-warning">
-
-                                                                <button type="button" class="close" data-dismiss="alert">
-
-                                                                    <i class="icon-remove"></i>
-
-                                                                </button>
-
-                                                                <strong>Warning!</strong>
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">净含量</label>
 
 
 
-                                                                Best check yo self, you're not looking too good.
+                                                                <div class="col-xs-12 col-sm-5">
 
-                                                                <br />
+                                                                    <span class="block input-icon input-icon-right">
 
-                                                            </div>
+                                                                        <input type="text" class="width-100" />
 
+                                                                        <i class="icon-info-sign"></i>
 
+                                                                    </span>
 
-                                                            <div class="alert alert-info">
+                                                                </div>
 
-                                                                <button type="button" class="close" data-dismiss="alert">
-
-                                                                    <i class="icon-remove"></i>
-
-                                                                </button>
-
-                                                                <strong>Heads up!</strong>
-
-
-
-                                                                This alert needs your attention, but it's not super important.
-
-                                                                <br />
+                                                                <div class="help-block col-xs-12 col-sm-reset inline"> Info tip help! </div>
 
                                                             </div>
-
-                                                        </div>
-
-                                                    </div>
+                                                          
+                                                            </form>
+</div>
 
 
 
                                                     <div class="step-pane" id="step3">
+                                                        <form class="form-horizontal" id="sample-form3">
+                                                            <div class="form-group has-info">
 
-                                                        <div class="center">
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">规格</label>
+                                                                <div class="col-xs-12 col-sm-5">
+                                                                    <span class="block input-icon input-icon-right">
 
-                                                            <h3 class="blue lighter">This is step 3</h3>
+                                                                        <input type="text" class="width-80" />
 
-                                                        </div>
+                                                                        <i class="icon-info-sign"></i>
+                                                                        <select>
+                                                                            <option>g</option>
+                                                                            <option>kg</option>
+                                                                        </select>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            <div class="form-group has-info">
 
-                                                    </div>
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">口味</label>
+                                                                <div class="col-xs-12 col-sm-5">
+                                                                    <span class="block input-icon input-icon-right">
+
+                                                                        <input type="text" class="width-100" />
+
+                                                                        <i class="icon-info-sign"></i>
+                                                                        
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group has-info">
+
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">单价</label>
+                                                                <div class="col-xs-12 col-sm-5">
+                                                                    <span class="block input-icon input-icon-right">
+
+                                                                        <input type="text" class="width-20" />
+
+                                                                        <i class="icon-info-sign"></i>
+                                                                       元
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group has-info">
+
+                                                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">库存</label>
+                                                                <div class="col-xs-12 col-sm-5">
+                                                                    <span class="block input-icon input-icon-right">
+
+                                                                        <input type="text" class="width-20" />
+
+                                                                        <i class="icon-info-sign"></i>
+                                                                       
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+</form>
+</div>
 
 
 
@@ -307,9 +378,30 @@
 
                                                         <div class="center">
 
-                                                            <h3 class="green">Congrats!</h3>
+                                                            <div class="col-xs-12">
 
-                                                            Your product is ready to ship! Click finish to continue!
+                                                                <!-- PAGE CONTENT BEGINS -->
+
+
+
+
+
+
+                                                                <div id="dropzone">
+
+                                                                    <form action="//dummy.html" class="dropzone">
+
+                                                                        <div class="fallback">
+
+                                                                            <input name="file" type="file" multiple="" />
+
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                </div><!-- PAGE CONTENT ENDS -->
+
+                                                            </div>
 
                                                         </div>
 
@@ -559,7 +651,50 @@
 <script src="../assets/js/ace-elements.min.js"></script>
 
 
+<script type="text/javascript">
 
+			jQuery(function($){
+
+
+
+			try {
+
+			    $(".dropzone").dropzone({
+			        url: "../OrangeHT/dropzone",
+
+			    paramName: "file", // The name that will be used to transfer the file
+
+			    maxFilesize: 0.5, // MB
+
+
+
+				addRemoveLinks : true,
+
+				dictDefaultMessage : '<span class="bigger-150 bolder"><i class="icon-caret-right red"></i> Drop files</span> to upload \<span class="smaller-80 grey">(or click)</span> <br /> \<i class="upload-icon icon-cloud-upload blue icon-3x"></i>'
+
+			,
+
+				dictResponseError: 'Error while uploading file!',
+
+
+
+				//change the previewTemplate to use Bootstrap progress bars
+
+				previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+
+			  });
+
+			} catch(e) {
+
+			  alert('Dropzone.js does not support older browsers!');
+
+			}
+
+
+
+			});
+
+</script>
 
 
 <!-- inline scripts related to this page -->
