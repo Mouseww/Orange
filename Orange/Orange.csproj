@@ -296,6 +296,7 @@
     <Content Include="assets\js\bootstrap-colorpicker.min.js" />
     <Content Include="assets\js\bootstrap-tag.min.js" />
     <Content Include="assets\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="assets\js\bootstrap.js" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\chosen.jquery.min.js" />
     <Content Include="assets\js\date-time\bootstrap-datepicker.min.js" />
