@@ -10,6 +10,102 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        internal bool AddCommodity(string Commodity_name, string Commodity_typea, string Commodity_typeb, string Commodity_typec, string jianjie, string[] arry)
+        {
+            var time=DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "");
+            var Commodity_2 = db.Commodity_2.First(a => a.Name == Commodity_typec);
+            
+            //添加到商品
+            var Commodity = new Commodity();
+            Commodity.Name = Commodity_name;
+            Commodity.jieshao = jianjie;
+            Commodity.Time = time;
+            Commodity.ID = Commodity_2;
+            db.Commodity.Add(Commodity);
+            db.SaveChanges();
+            var Commodity_new = db.Commodity.First(a => a.Time == time&&a.Name==Commodity_name);
+            //添加到选项
+            var temp = new List<string>();
+            var temp2 = new List<string>();
+            for (int i = 0; i < arry.Length; i = i + 4) {
+                //去重
+                var jishu = 1;
+                var jishu2 = 1;
+                for (int j = 0; j < temp.Count; j++)
+                {
+                    if (jishu < temp.Count + 2)
+                    {
+                        if (temp[j] == arry[i])
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        for (int n = 0; n < temp2.Count; n++)
+                        {
+                            if (jishu2 < temp2.Count + 2)
+                            {
+                                if (temp2[n] == arry[i + 1])
+                                {
+                                    break;
+                                }
+                            }
+                            else
+                            {//插入option
+                                var option1 = new Commodity_option1();
+                                option1.type_name = "规格";
+                                option1.Time = time;
+                                option1.Commodity = Commodity;
+                                option1.option = arry[i];
+                                temp.Add(arry[i]);
+                                db.Commodity_option1.Add(option1);
+                                var option2 = new Commodity_option2();
+                                option2.type_name = "口味";
+                                option2.Time = time;
+                                option2.Commodity = Commodity;
+                                option2.option = arry[i + 1];
+                                temp2.Add(arry[i+1]);
+                                db.Commodity_option2.Add(option2);
+                            }
+
+                        }
+                    }
+                }
+         
+
+            }
+            db.SaveChanges();
+            //插入商品属性
+            var Commodity_option = db.Commodity_option1.Where(a => a.Time == time).ToList();
+            var Commodity_option2 = db.Commodity_option2.Where(a => a.Time == time).ToList();
+            for(int i = 0; i < Commodity_option.Count; i++)
+            {
+                for(int j = 0; j < Commodity_option2.Count; j++)
+                {
+                    for(int n = 0; n < arry.Length; n+=4)
+                    {
+                        if (Commodity_option[i].option == arry[n] && Commodity_option2[j].option == arry[i + 1])
+                        {
+                            var Commodity_attr = new Commodity_attribute();
+                            Commodity_attr.Commodity = Commodity;
+                            Commodity_attr.Commodity_option1= Commodity_option[i];
+                            Commodity_attr.Name = Commodity_name;
+                        }
+                    }
+                }
+            }
+            
+            
+           
+           
+            return true;
+        }
+        /// <summary>
+        /// 修改地址
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         internal bool UpRess(int id)
         {
             var ress = db.Ress.First(a => a.moren == "1");

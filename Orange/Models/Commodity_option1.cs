@@ -6,10 +6,9 @@ namespace Orange.Models
     {
         [Key]
         public int Id { get; set; }
-        
         public Commodity Commodity { get; set; }
         public string option { get; set; }
         public string type_name { get; set; }
-
+        public string Time { get; set; }
     }
 }

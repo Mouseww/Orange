@@ -8,6 +8,7 @@ namespace Orange.Models
         public int ID { get; set; }
         public string Type_Name { get; set; }
         public string img { get; set; }
-        
+        public string Time { get; set; }
+
     }
 }

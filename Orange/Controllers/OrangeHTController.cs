@@ -56,16 +56,20 @@ namespace Orange.Controllers
         {
             return View("../OrangeHT/Commodity4");
         }
-        public ActionResult SavePicture(string picString)
+      
+        public ActionResult submit(string Commodity_name,string Commodity_typea, string Commodity_typeb, string Commodity_typec,string jianjie,string option)
         {
-            bool isOk = false;
-            string msg = string.Empty;
-            //其他操作
-            //.........
-            //.........
-            return Json(new { suc = isOk, msg = msg });
-        }
+            var arry=option.Split(',');
 
+
+            var flag = new biz().AddCommodity(Commodity_name,Commodity_typea,Commodity_typeb,Commodity_typec,jianjie,arry);
+            return Json(flag);
+        }
+        /// <summary>
+        /// 图片上传至路径
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
         public ActionResult dropzone(HttpPostedFileBase file)
         {
 
@@ -73,14 +77,16 @@ namespace Orange.Controllers
             {
                 return Content("没有文件！", "text/plain");
             }
-            var fileName = Path.Combine(Request.MapPath("../images"), Path.GetFileName(file.FileName));
-            ViewBag.filepath = Path.GetFileName(file.FileName);
+            var time = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ","");
+            
+            var fileName = Path.Combine(Request.MapPath("../images"), Path.GetFileName(file.FileName)).Replace(".jpg",time+".jpg");
+            ViewBag.filepath = Path.GetFileName(file.FileName)+time;
             try
             {
                 file.SaveAs(fileName);
                 //tm.AttachmentPath = fileName;//得到全部model信息
 
-                return View("上传成功 ！", "text/plain");
+                return View("../OrangeHT/Commodity1");
             }
             catch
             {

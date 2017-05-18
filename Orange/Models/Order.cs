@@ -19,7 +19,7 @@ namespace Orange.Models
         public string ManName { get; set; }
         public string Manphone { get; set; }
         public string Post { get; set; }
-        public DataType Time { get; set; }
+        public string Time { get; set; }
         public string State { get; set; }//订单状态
 
     }

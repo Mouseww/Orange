@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orange.Models
 {
@@ -10,12 +11,13 @@ namespace Orange.Models
         public int Number { get; set; }
         public double Price { get; set; }
         public double Price_old { get; set; }
+    
         public Commodity_2 ID { get; set; }
         public string img { get; set; }
         public string img_small { get; set; }
      
         public string jieshao { get; set; }
-
+        public string Time { get; set; }
 
 
 
