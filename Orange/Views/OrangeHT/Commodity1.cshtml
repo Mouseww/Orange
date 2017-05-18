@@ -735,7 +735,7 @@
 
 				}).on('finished', function(e) {
 
-				    $.post('/OrangeHT/submit', { "Commodity_name": $('#inputInfo0').val(), "Commodity_typea": $('#type1').text().trim(), "Commodity_typeb": $('#type2').text().trim(), "Commodity_typec": $('#type3').text().trim(), "jianjie": $('#inputInfo2').val(), "option":option.toString() }, function (data) {
+				    $.post('/OrangeHT/submit', { "Commodity_name": $('#inputInfo0').val(), "Commodity_typea": $('#type1').find('option:selected').text(), "Commodity_typeb": $('#type2').find('option:selected').text(), "Commodity_typec": $('#type3').find('option:selected').text(), "jianjie": $('#inputInfo2').val(), "option": option.toString() }, function (data) {
 
                                                                     
 				    });

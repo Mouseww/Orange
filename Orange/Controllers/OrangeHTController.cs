@@ -57,12 +57,12 @@ namespace Orange.Controllers
             return View("../OrangeHT/Commodity4");
         }
       
-        public ActionResult submit(string Commodity_name,string Commodity_typea, string Commodity_typeb, string Commodity_typec,string jianjie,string option)
+        public ActionResult submit(string Commodity_name,string Commodity_typec,string jianjie,string option)
         {
             var arry=option.Split(',');
 
 
-            var flag = new biz().AddCommodity(Commodity_name,Commodity_typea,Commodity_typeb,Commodity_typec,jianjie,arry);
+            var flag = new biz().AddCommodity(Commodity_name,Commodity_typec,jianjie,arry);
             return Json(flag);
         }
         /// <summary>

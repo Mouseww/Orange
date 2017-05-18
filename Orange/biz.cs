@@ -10,7 +10,7 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        internal bool AddCommodity(string Commodity_name, string Commodity_typea, string Commodity_typeb, string Commodity_typec, string jianjie, string[] arry)
+        internal bool AddCommodity(string Commodity_name,string Commodity_typec, string jianjie, string[] arry)
         {
             var time=DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "");
             var Commodity_2 = db.Commodity_2.First(a => a.Name == Commodity_typec);
@@ -27,55 +27,85 @@ namespace Orange
             //添加到选项
             var temp = new List<string>();
             var temp2 = new List<string>();
-            for (int i = 0; i < arry.Length; i = i + 4) {
+            
+          
                 //去重
-                var jishu = 1;
-                var jishu2 = 1;
-                for (int j = 0; j < temp.Count; j++)
+               
+                if (temp.Count == 0)
                 {
-                    if (jishu < temp.Count + 2)
-                    {
-                        if (temp[j] == arry[i])
-                        {
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        for (int n = 0; n < temp2.Count; n++)
-                        {
-                            if (jishu2 < temp2.Count + 2)
-                            {
-                                if (temp2[n] == arry[i + 1])
-                                {
-                                    break;
-                                }
-                            }
-                            else
-                            {//插入option
-                                var option1 = new Commodity_option1();
-                                option1.type_name = "规格";
-                                option1.Time = time;
-                                option1.Commodity = Commodity;
-                                option1.option = arry[i];
-                                temp.Add(arry[i]);
-                                db.Commodity_option1.Add(option1);
-                                var option2 = new Commodity_option2();
-                                option2.type_name = "口味";
-                                option2.Time = time;
-                                option2.Commodity = Commodity;
-                                option2.option = arry[i + 1];
-                                temp2.Add(arry[i+1]);
-                                db.Commodity_option2.Add(option2);
-                            }
-
-                        }
-                    }
-                }
-         
+                    var option1 = new Commodity_option1();
+                    option1.type_name = "口味";
+                    option1.Time = time;
+                    option1.Commodity = Commodity_new;
+                    option1.option = arry[1];
+                    temp.Add(arry[1]);
+                    db.Commodity_option1.Add(option1);
+                    var option2 = new Commodity_option2();
+                    option2.type_name = "规格";
+                    option2.Time = time;
+                    option2.Commodity = Commodity_new;
+                    option2.option = arry[0];
+                    temp2.Add(arry[0]);
+                    db.Commodity_option2.Add(option2);
+                db.SaveChanges();
 
             }
-            db.SaveChanges();
+                for (int j = 4; j < arry.Length; j+=4)
+                {
+                var flag = true;
+                var flag2 = true;
+                for (int te = 0; te < temp.Count; te++)
+                    {
+                       
+                          
+                            if (temp[te] == arry[j+1])
+                            {
+
+                        flag = false;
+                        continue;
+                            }
+                       
+                    }
+                if (flag)
+                {
+                    var option1 = new Commodity_option1();
+                    option1.type_name = "口味";
+                    option1.Time = time;
+                    option1.Commodity = Commodity_new;
+                    option1.option = arry[j + 1];
+                    temp.Add(arry[j + 1]);
+                    db.Commodity_option1.Add(option1);
+                    db.SaveChanges();
+                   
+                }
+
+                for (int te = 0; te < temp2.Count; te++)
+                    {
+                       
+                            if (temp2[te] == arry[j])
+                            {
+                        flag2 = false;
+                                continue;
+                            }
+                       
+                    }
+                if (flag2)
+
+                {
+                    var option2 = new Commodity_option2();
+                    option2.type_name = "规格";
+                    option2.Time = time;
+                    option2.Commodity = Commodity_new;
+                    option2.option = arry[j];
+                    temp2.Add(arry[j]);
+                    db.Commodity_option2.Add(option2);
+                    db.SaveChanges();
+                    continue;
+                }
+
+            }//j
+        
+       
             //插入商品属性
             var Commodity_option = db.Commodity_option1.Where(a => a.Time == time).ToList();
             var Commodity_option2 = db.Commodity_option2.Where(a => a.Time == time).ToList();
@@ -84,16 +114,23 @@ namespace Orange
                 for(int j = 0; j < Commodity_option2.Count; j++)
                 {
                     for(int n = 0; n < arry.Length; n+=4)
-                    {
-                        if (Commodity_option[i].option == arry[n] && Commodity_option2[j].option == arry[i + 1])
+                    {//从arry数组里匹配对应的行
+                        if (Commodity_option[i].option == arry[n+1] && Commodity_option2[j].option == arry[n])
                         {
                             var Commodity_attr = new Commodity_attribute();
                             Commodity_attr.Commodity = Commodity;
                             Commodity_attr.Commodity_option1= Commodity_option[i];
+                            Commodity_attr.Commodity_option2 = Commodity_option2[j];
+                            Commodity_attr.Price =double.Parse(arry[n+2]);
+                            Commodity_attr.Price_old = double.Parse(arry[n+2])+10;
+                            Commodity_attr.Number = int.Parse(arry[n+3]); ;
                             Commodity_attr.Name = Commodity_name;
+                            db.Commodity_attribute.Add(Commodity_attr);
+                            continue;
                         }
                     }
                 }
+                db.SaveChanges();
             }
             
             
