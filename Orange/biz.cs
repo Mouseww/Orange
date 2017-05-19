@@ -10,7 +10,7 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        internal bool AddCommodity(string Commodity_name,string Commodity_typec, string jianjie, string[] arry)
+        internal bool AddCommodity(string Commodity_name,string Commodity_typec, string jianjie, string[] arry,string img)
         {
             var time=DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "");
             var Commodity_2 = db.Commodity_2.First(a => a.Name == Commodity_typec);
@@ -21,6 +21,7 @@ namespace Orange
             Commodity.jieshao = jianjie;
             Commodity.Time = time;
             Commodity.ID = Commodity_2;
+            Commodity.img = img;
             db.Commodity.Add(Commodity);
             db.SaveChanges();
             var Commodity_new = db.Commodity.First(a => a.Time == time&&a.Name==Commodity_name);
@@ -99,6 +100,7 @@ namespace Orange
                     option2.option = arry[j];
                     temp2.Add(arry[j]);
                     db.Commodity_option2.Add(option2);
+                    
                     db.SaveChanges();
                     continue;
                 }
@@ -123,7 +125,8 @@ namespace Orange
                             Commodity_attr.Commodity_option2 = Commodity_option2[j];
                             Commodity_attr.Price =double.Parse(arry[n+2]);
                             Commodity_attr.Price_old = double.Parse(arry[n+2])+10;
-                            Commodity_attr.Number = int.Parse(arry[n+3]); ;
+                            Commodity_attr.Number = int.Parse(arry[n+3]);
+                            
                             Commodity_attr.Name = Commodity_name;
                             db.Commodity_attribute.Add(Commodity_attr);
                             continue;

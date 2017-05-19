@@ -22,6 +22,7 @@ namespace Orange.Controllers
         /// <returns></returns>
         public ActionResult Commodity()
         {
+           
             return View("../OrangeHT/Commodity");
         }
         /// <summary>
@@ -30,7 +31,8 @@ namespace Orange.Controllers
         /// <returns></returns>
         public ActionResult Commodity1()
         {
-            return View("../OrangeHT/Commodity1");
+  
+            return View();
         }
         /// <summary>
         /// 商品信息修改
@@ -58,11 +60,12 @@ namespace Orange.Controllers
         }
       
         public ActionResult submit(string Commodity_name,string Commodity_typec,string jianjie,string option)
+
         {
             var arry=option.Split(',');
-
-
-            var flag = new biz().AddCommodity(Commodity_name,Commodity_typec,jianjie,arry);
+            string img = ((List<string>)Session["filename"])[0];
+            Session["filename"] = null;
+            var flag = new biz().AddCommodity(Commodity_name,Commodity_typec,jianjie,arry,img);
             return Json(flag);
         }
         /// <summary>
@@ -80,10 +83,23 @@ namespace Orange.Controllers
             var time = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ","");
             
             var fileName = Path.Combine(Request.MapPath("../images"), Path.GetFileName(file.FileName)).Replace(".jpg",time+".jpg");
-            ViewBag.filepath = Path.GetFileName(file.FileName)+time;
+            if (Session["filename"] != null)
+            {
+                var listfile = (List<string>)Session["filename"];
+                listfile.Add(Path.GetFileName(file.FileName).Replace(".jpg", time + ".jpg"));
+                Session["filename"] = listfile;
+            }
+            else
+            {
+                var listfile = new List<string>();
+                listfile.Add(Path.GetFileName(file.FileName).Replace(".jpg", time + ".jpg"));
+                Session["filename"] = listfile;
+            }
             try
             {
+               // ViewBag.filename = Path.GetFileName(file.FileName) + time;
                 file.SaveAs(fileName);
+               
                 //tm.AttachmentPath = fileName;//得到全部model信息
 
                 return View("../OrangeHT/Commodity1");
