@@ -40,7 +40,7 @@ namespace Orange.Controllers
         /// <returns></returns>
         public ActionResult Commodity2()
         {
-            return View("../OrangeHT/Commodity2");
+            return View();
         }
         /// <summary>
         /// 分类管理
@@ -48,7 +48,7 @@ namespace Orange.Controllers
         /// <returns></returns>
         public ActionResult Commodity3()
         {
-            return View("../OrangeHT/Commodity3");
+            return View();
         }
         /// <summary>
         /// 商品下架
@@ -58,7 +58,14 @@ namespace Orange.Controllers
         {
             return View("../OrangeHT/Commodity4");
         }
-      
+      /// <summary>
+      /// 商品添加ajax
+      /// </summary>
+      /// <param name="Commodity_name"></param>
+      /// <param name="Commodity_typec"></param>
+      /// <param name="jianjie"></param>
+      /// <param name="option"></param>
+      /// <returns></returns>
         public ActionResult submit(string Commodity_name,string Commodity_typec,string jianjie,string option)
 
         {

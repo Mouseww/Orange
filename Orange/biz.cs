@@ -10,6 +10,15 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        /// <summary>
+        /// 商品添加
+        /// </summary>
+        /// <param name="Commodity_name"></param>
+        /// <param name="Commodity_typec"></param>
+        /// <param name="jianjie"></param>
+        /// <param name="arry"></param>
+        /// <param name="img"></param>
+        /// <returns></returns>
         internal bool AddCommodity(string Commodity_name,string Commodity_typec, string jianjie, string[] arry,string img)
         {
             var time=DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "");
