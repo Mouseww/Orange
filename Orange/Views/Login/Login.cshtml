@@ -1,12 +1,14 @@
 ﻿
 @{
     Layout = null;
-    var  flag = ViewBag.flag;
-    if (flag!=null) {
+    var flag = ViewBag.flag;
+    if (flag != null)
+    {
         if (flag)
         {
-
-            Response.Redirect("../Commodity/Index");
+            <script>
+        document.location.href="../Commodity/Index"
+            </script>
         }
         else
         {
