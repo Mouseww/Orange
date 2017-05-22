@@ -12,6 +12,24 @@ namespace Orange.Controllers
     public class OrangeHTController : Controller
     {
         // GET: OrangeHT
+        public ActionResult SelectType2(string id, string typename)
+        {
+            int type1_id = int.Parse(id);
+            var res = new biz().bizSelectType2(type1_id, typename);
+            //ViewBag.res = res;
+            //return View("../OrangeHT/Commodity1");
+            return Json(res, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult SelectType3(string id2, string typename2)
+        {
+            int type1_id = int.Parse(id2);
+            var res = new biz().bizSelectType3(type1_id, typename2);
+            return Json(res, JsonRequestBehavior.AllowGet);
+
+
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -31,7 +49,8 @@ namespace Orange.Controllers
         /// <returns></returns>
         public ActionResult Commodity1()
         {
-  
+            var res = new biz().bizGetCommodityCategory();
+            ViewBag.ComType = res;
             return View();
         }
         /// <summary>

@@ -10,6 +10,41 @@ namespace Orange
     public class biz
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        internal IList<CommodityType> bizGetCommodityCategory()
+        {
+            var r = db.Commodity_type.Select(a => new ViewModel.CommodityType
+            {
+                Id = a.ID,
+                type_name = a.Type_Name
+            }).ToList();
+            return r;
+
+        }
+        internal IList<Commodity1> bizSelectType2(int type1_id, string typename)
+        {
+            var res1 = db.Commodity_1.Where(a => a.ID_1.ID == type1_id).Select(a => new ViewModel.Commodity1
+            {
+                ID = a.ID,
+                Name = a.Name
+            }).ToList();
+            //var res2 = db.Commodity_2.Where(b => b.ID == type1_id).Select(b => new ViewModel.Commodity1
+            //{
+            //    Name = b.Name
+            //}).ToList();
+            return res1;
+        }
+        internal IList<Commodity1> bizSelectType3(int type1_id, string typename2)
+        {
+
+            var res = db.Commodity_2.Where(b => b.ID_1.ID == type1_id).Select(b => new ViewModel.Commodity1
+            {
+                ID = b.ID,
+                Name = b.Name
+
+            }).ToList();
+            return res;
+
+        }
         /// <summary>
         /// 商品添加
         /// </summary>

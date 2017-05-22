@@ -212,6 +212,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\Commodity1.cs" />
     <Compile Include="ViewModel\CommodityHT.cs" />
+    <Compile Include="ViewModel\CommodityType.cs" />
     <Compile Include="ViewModel\ShopCars.cs" />
     <Compile Include="ViewModel\VMCommodity.cs" />
     <Compile Include="ViewModel\VMOption.cs" />
@@ -381,6 +382,7 @@
     <Content Include="Content\optstyle.css" />
     <Content Include="Content\orstyle.css" />
     <Content Include="Content\personal.css" />
+    <Content Include="Content\personDate\address.css" />
     <Content Include="Content\personDate\images\date_bg.png" />
     <Content Include="Content\personDate\lyz.calendar.css" />
     <Content Include="Content\point.css" />
@@ -690,6 +692,7 @@
     <Content Include="AmazeUI-2.4.2\assets\fonts\fontawesome-webfont.woff" />
     <Content Include="AmazeUI-2.4.2\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="AmazeUI-2.4.2\assets\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\personDate\address.js" />
     <Content Include="widgets.html" />
     <Content Include="www.jq22.com.txt" />
     <Content Include="wysiwyg.html" />
