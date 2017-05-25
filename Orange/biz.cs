@@ -186,7 +186,71 @@ namespace Orange
             return true;
         }
         /// <summary>
+        /// 删除地址
+        /// </summary>
+        /// <param name="caozuo"></param>
+        /// <returns></returns>
+        internal bool DelectAddress(string caozuo)
+        {
+            int id = int.Parse(caozuo);
+            var ress = db.Ress.First(a => a.id == id);
+            db.Ress.Remove(ress);
+            db.SaveChanges();
+            return true;
+        }
+        /// <summary>
         /// 修改地址
+        /// </summary>
+        /// <param name="user_name"></param>
+        /// <param name="user_phone"></param>
+        /// <param name="sheng"></param>
+        /// <param name="city"></param>
+        /// <param name="quyu"></param>
+        /// <param name="xiangxi"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        internal bool UpAddress(string user_name, string user_phone, string sheng, string city, string quyu, string xiangxi, string id)
+        {
+            var id1 = int.Parse(id);
+            var address = db.Ress.First(a => a.id ==id1);
+            address.City = city;
+            address.Province = sheng;
+            address.telephone = user_phone;
+            address.name = user_name;
+            address.Township = quyu;
+            address.xiangxi = xiangxi;
+            db.SaveChanges();
+            return true;
+        }
+        /// <summary>
+        /// 添加地址
+        /// </summary>
+        /// <param name="user_name"></param>
+        /// <param name="user_phone"></param>
+        /// <param name="sheng"></param>
+        /// <param name="city"></param>
+        /// <param name="quyu"></param>
+        /// <param name="xiangxi"></param>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        internal bool Addaddress(string user_name, string user_phone, string sheng, string city, string quyu, string xiangxi,int ID)
+        {
+            var address = new Ress();
+            address.moren = "2";
+            address.name = user_name;
+            address.telephone = user_phone;
+            address.Province = sheng;
+            address.City = city;
+            address.Township = quyu;
+            address.xiangxi = xiangxi;
+            address.User = db.Users.First(a => a.ID == ID);
+            db.Ress.Add(address);
+            db.SaveChanges();
+            return true;
+        }
+
+        /// <summary>
+        /// 修改默认地址
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

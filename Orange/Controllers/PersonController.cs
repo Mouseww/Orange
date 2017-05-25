@@ -127,10 +127,36 @@ namespace Orange.Controllers
         /// 地址管理
         /// </summary>
         /// <returns></returns>
-        public ActionResult address()
+        public ActionResult address(string user_name, string user_phone, string sheng, string city, string quyu,string xiangxi,string id,string caozuo)
         {
             var user = (VMUser)Session["User"];
+            if (caozuo != null)
+            {
+                var end = new biz().DelectAddress(caozuo);
+                if (end)
+                {
+                    ViewBag.msg = "操作成功";
+                }
+            }
+            if (user_name != null) {
+                if (id!=null)
+                {
+                    var end = new biz().UpAddress(user_name, user_phone, sheng, city, quyu, xiangxi, id);
+                    if (end)
+                    {
+                        ViewBag.msg = "操作成功";
+                    }
+                }
+                else { 
+            var end = new biz().Addaddress(user_name, user_phone, sheng, city, quyu, xiangxi,user.ID);
+                if (end)
+                {
+                    ViewBag.msg = "操作成功";
+                }
+                }
+            }
             var ress = new biz().SelectRess(user.ID);
+          
             ViewBag.ress = ress;
             return View();
         }

@@ -123,31 +123,7 @@
 
                 <div class="clear"></div>
             </div>
-            @*
-            <script>
-                    $(document).ready(function () {
-                        $.getJSON("/Commodity/Ajax1", {
-                            "id":@ViewBag.Introduction.Id },
-                            function(data){
-
-                                $.each(data,function(index,el){
-
-                                    var a1=$('#sku1').text();
-                                    if(a1==null&&a1==""){
-                                        $('#sku1').text(el.option2+"<i></i>");
-                                       a1=$('#sku1').text();
-                                    }
-                                    if(el.option2!=a1){
-                                        $('#sku1').after("<li  class='sku-line'>"+el.option2+"<i></i></li>")
-                                    }
-
-                                }
-                                    )
-                            }
-                            )
-
-                    });
-            </script>*@
+        
             <div class="clearfixRight">
 
                 <!--规格属性-->
