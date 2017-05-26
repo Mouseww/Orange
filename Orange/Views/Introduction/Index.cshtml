@@ -352,6 +352,7 @@
     </dl>
     @* 改变价格 *@
     <script>
+        var Price = null;
         $(".sku-line").click(
             function () {
                 if (attr_id1 == null || attr_id2 == null) {
@@ -361,6 +362,7 @@
                     
                     $.post("ChangePrice", { "kouwei": attr_id1, "guige": attr_id2 }, function (data) {
                         $(".sys_item_price").text(data.Price);
+                        Price = data.Id;
                         $(".kucun").text(data.Number);
                         $('.sys_item_mktprice').text(data.Price_old)
 
@@ -404,7 +406,7 @@
         $('a#LikBasket11').click(function () {
             if (attr_id1 != null && attr_id2 != null) {
                 var number = $('#text_box').val();
-                document.location.href = "../Introduction/Index?id=@ViewBag.Introduction.Id&&Commodity_id=@ViewBag.Introduction.Id&&attr=" + attr_id1 + "&&attr2=" + attr_id2 + "&&number=" + number + "";
+                document.location.href = "../Introduction/Index?id=@ViewBag.Introduction.Id&&Commodity_id="+Price+"&&attr=" + attr_id1 + "&&attr2=" + attr_id2 + "&&number=" + number + "&&Price=" + $('.sys_item_price').text() + "&&Old_Price=" + $('.sys_item_mktprice').text();
             }
             else {
                 alert("请先选择商品属性");
@@ -413,7 +415,7 @@
         $('a#LikBuy').click(function () {
             if (attr_id1 != null && attr_id2 != null) {
                 var number = $('#text_box').val();
-                document.location.href = "../Introduction/Order?id=@ViewBag.Introduction.Id&&Commodity_id=@ViewBag.Introduction.Id&&op_type=@ViewBag.attribute[0].type_name&&op_type2=@ViewBag.attr[0].type_name&&attr=" + attr_name1 + "&&attr2=" + attr_name2 + "&&number=" + number + "&&img=@ViewBag.Introduction.img" + "&&Commodity_name=@ViewBag.Introduction.Name";
+                document.location.href = "../Introduction/Order?id=@ViewBag.Introduction.Id&&Commodity_id=@ViewBag.Introduction.Id&&op_type=@ViewBag.attribute[0].type_name&&op_type2=@ViewBag.attr[0].type_name&&attr=" + attr_name1 + "&&attr2=" + attr_name2 + "&&number=" + number + "&&img=@ViewBag.Introduction.img" + "&&Commodity_name=@ViewBag.Introduction.Name&&Price=" + $('.sys_item_price').text() + "&&Old_Price=" + $('.sys_item_mktprice').text();
             }
             else {
                 alert("请先选择商品属性");

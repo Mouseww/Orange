@@ -21,5 +21,8 @@ namespace Orange.ViewModel
         public string img_small { get; set; }
         public string option1_name { get; set; }
         public string option2_name { get; set; }
+        public double Price { get; set; }
+
+        public double Old_Price { get; set; }
     }
 }

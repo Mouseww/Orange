@@ -11,6 +11,11 @@ namespace Orange.Controllers
 {
     public class shopcartController : Controller
     {
+        public ActionResult ChangeNumber(string number,int id)
+        {
+            var num = new biz().UpNumber(int.Parse(number),id);
+            return Json(num, JsonRequestBehavior.AllowGet);
+        }
         // GET: shopcart
         public ActionResult Index(string delect_id,string arry)
         {
@@ -29,7 +34,7 @@ namespace Orange.Controllers
                 var flag = new biz().DelectShopcartAll(arry1);
                 ViewBag.msg = "删除成功";
             }
-
+            
             
             if (delect_id != null)
             {

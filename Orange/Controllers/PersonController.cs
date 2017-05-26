@@ -132,11 +132,15 @@ namespace Orange.Controllers
             var user = (VMUser)Session["User"];
             if (caozuo != null)
             {
-                var end = new biz().DelectAddress(caozuo);
-                if (end)
+                try
                 {
-                    ViewBag.msg = "操作成功";
+                    var end = new biz().DelectAddress(caozuo);
+                    if (end)
+                    {
+                        ViewBag.msg = "操作成功";
+                    }
                 }
+                catch { }
             }
             if (user_name != null) {
                 if (id!=null)

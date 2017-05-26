@@ -22,7 +22,7 @@ namespace Orange.Controllers
         /// <param name="img"></param>
         /// <param name="Commodity_name"></param>
         /// <returns></returns>
-        public ActionResult Order(int id, string Commodity_id, string op_type, string op_type2, string attr, string attr2, string number, string remove_user, string img, string Commodity_name)
+        public ActionResult Order(int id, string Commodity_id, string op_type, string op_type2, string attr, string attr2, string number, string remove_user, string img, string Commodity_name,string Price,string Old_Price)
         {
             var user = (VMUser)Session["User"];
             if (user != null)
@@ -38,6 +38,8 @@ namespace Orange.Controllers
                     Commodity.Number = int.Parse(number);
                     Commodity.img = img;
                     Commodity.shop_name = Commodity_name;
+                    Commodity.Price = double.Parse(Price);
+                    Commodity.Old_Price = double.Parse(Old_Price);
                     ViewBag.Commodity = Commodity;
                     var ress = new biz().SelectRess(user.ID);
                     ViewBag.ress = ress;
@@ -61,7 +63,7 @@ namespace Orange.Controllers
         /// <param name="number"></param>
         /// <returns></returns>
             // GET: Introduction
-        public ActionResult Index(int id, string Commodity_id, string attr, string attr2, string number, string remove_user)
+        public ActionResult Index(int id, string Commodity_id, string attr, string attr2, string number, string remove_user,string Price, string Old_Price)
         {
             var user = (VMUser)Session["User"];
 
@@ -71,7 +73,7 @@ namespace Orange.Controllers
             {
                 if (user != null)
                 {
-                    var fl = new biz().AddShopcart(Commodity_id, attr, attr2, number, user.username);
+                    var fl = new biz().AddShopcart(Commodity_id, attr, attr2, number, user.username,Price,Old_Price);
                     if (fl)
                     {
                         ViewBag.msg = "添加成功";

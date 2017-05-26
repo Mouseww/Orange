@@ -77,12 +77,13 @@
                     <div class="bundle-main">
                         <script>
                             var check_id=new Array();
+                            var all_price=0;
                         </script>
                         @foreach(var Commodity in ViewBag.shopcar) { 
                         <ul class="item-content clearfix">
                             <li class="td td-chk">
                                 <div class="cart-checkbox ">
-                                    <input class="check" id="check_@Commodity.Id" name="items[]" value="170037950254" type="checkbox">
+                                    <input class="check" id="check_@Commodity.Id" name="items[]" value="@Commodity.Price" type="checkbox">
                                     <label for="J_CheckBox_170037950254"></label>
                                     @*<script>
 
@@ -115,21 +116,22 @@
                                 </div>
                             </li>
                             <li class="td td-info">
-                                <div class="item-props item-props-can">
+                                <div >
+                                    <br />
                                     <span id="sku_@Commodity.option1_id" class="sku-line">@Commodity.option1_name:@Commodity.option1</span>
                                     <span id="sku_@Commodity.option2_id" class="sku-line">@Commodity.option2_name:@Commodity.option2</span>
-                                    <span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-                                    <i class="theme-login am-icon-sort-desc"></i>
+                                    
+                                   
                                 </div>
                             </li>
                             <li class="td td-price">
                                 <div class="item-price price-promo-promo">
                                     <div class="price-content">
                                         <div class="price-line">
-                                            <em class="price-original">78.00</em>
+                                            <em class="price-original" id="OldPrice_@Commodity.Id">@Commodity.Old_Price</em>
                                         </div>
                                         <div class="price-line">
-                                            <em class="J_Price price-now" tabindex="0">39.00</em>
+                                            <em class="J_Price price-now" id="Pirce_@Commodity.Id" tabindex="0">@Commodity.Price</em>
                                         </div>
                                     </div>
                                 </div>
@@ -138,31 +140,82 @@
                                 <div class="amount-wrapper ">
                                     <div class="item-amount ">
                                         <div class="sl">
-                                            <input class="min am-btn" name="" type="button" value="-" />
-                                            <input class="text_box" name="" type="text" value="@Commodity.Number" style="width:30px;" />
-                                            <input class="add am-btn" name="" type="button" value="+" />
+                                            <input class="min am-btn" id="del_@Commodity.Id" name="" type="button" value="-" />
+                                            <input class="text_box" id="num_@Commodity.Id" name="" type="text" value="@Commodity.Number" style="width:30px;" />
+                                            <input class="add am-btn" id="add_@Commodity.Id" name="" type="button" value="+" />
+                                           
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="td td-sum">
                                 <div class="td-inner">
-                                    <em tabindex="0" class="J_ItemSum number">117.00</em>
+                                    <em tabindex="0" id="zongjia_@Commodity.Id" class="J_ItemSum number">117.00</em>
                                 </div>
                             </li>
                             <li class="td td-op">
                                 <div class="td-inner">
-                                    <a title="移入收藏夹" class="btn-fav" href="#">
-                                        移入收藏夹
-                                    </a>
+                                    
                                     <a href="Index?delect_id=@Commodity.Id";" data-point-url="" class="delete">
                                         删除
                                     </a>
                                  
                                 </div>
                             </li>
+                          
                         </ul>
+                        <script>
+                        
+                            $(function () {
 
+                                $('#zongjia_@Commodity.Id').text(parseInt($('#Pirce_@Commodity.Id').text())*parseInt($('#num_@Commodity.Id').val()));
+                                $('#check_@Commodity.Id').val($('#zongjia_@Commodity.Id').text())
+                            })
+                            $('#num_@Commodity.Id').change(function () {
+
+                                $.post("ChangeNumber", { "number": $('#num_@Commodity.Id').val(),"id": @Commodity.Id}, function (data) {
+                                    if(data){
+                                        $('#zongjia_@Commodity.Id').text(parseInt($('#Pirce_@Commodity.Id').text()) * parseInt($('#num_@Commodity.Id').val()));
+                                        $('#check_@Commodity.Id').val($('#zongjia_@Commodity.Id').text())
+                                    }
+                                    else{
+                                        alert('库存不足');
+                                    }
+                                })
+                            })
+                            $('#del_@Commodity.Id').click(function(){
+                                if($('#num_@Commodity.Id').val()=="2"){
+                                   
+                                    $.post("ChangeNumber", { "number": $('#num_@Commodity.Id').val(),"id": @Commodity.Id}, function (data) {
+                                        $('#zongjia_@Commodity.Id').text(parseInt($('#Pirce_@Commodity.Id').text()) * parseInt($('#num_@Commodity.Id').val()));
+                                        $('#check_@Commodity.Id').val($('#zongjia_@Commodity.Id').text())
+                                    })
+                                    alert('数量若为0  则自动删除商品！')
+                                }
+                                else if($('#num_@Commodity.Id').val()=="1"){
+                                    document.location.href="Index?delect_id=@Commodity.Id";
+                                }
+                                else{
+                                    $.post("ChangeNumber", { "number": $('#num_@Commodity.Id').val(),"id": @Commodity.Id}, function (data) {
+                                        $('#zongjia_@Commodity.Id').text(parseInt($('#Pirce_@Commodity.Id').text()) * parseInt($('#num_@Commodity.Id').val()));
+                                        $('#check_@Commodity.Id').val($('#zongjia_@Commodity.Id').text())
+                                    })
+                                }
+                            })
+                            $('#add_@Commodity.Id').click(function(){
+
+                                $.post("ChangeNumber", { "number": parseInt($('#num_@Commodity.Id').val())+1,"id":@Commodity.Id}, function (data) {
+                                    if(data){
+                                        $('#zongjia_@Commodity.Id').text(parseInt($('#Pirce_@Commodity.Id').text()) * parseInt($('#num_@Commodity.Id').val()));
+                                        $('#check_@Commodity.Id').val($('#zongjia_@Commodity.Id').text())
+                                    }else{
+                                        alert('库存不足');
+                                    }
+                                    })
+
+
+                            })
+                        </script>
 
 
                         }
@@ -196,7 +249,7 @@
             </div>
             <div class="operations">
                 <a href="javascript:delect_id()" hidefocus="true" class="deleteAll">删除</a>
-                <a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
+               
             </div>
             <div class="float-bar-right">
                 <div class="amount-sum">
@@ -220,6 +273,19 @@
 
         </div>
         <script>
+            $('*').click(function(){
+                setTimeout('chen()', 500);
+            } )
+            function chen(){
+
+                $('#J_Total').text('0.00');
+                $('#J_SelectedItemsCount').text('0');
+                var Priceitem=  $(':checkbox[checked]');
+                for(var i=0;i<Priceitem.length;i++){
+                    $('#J_SelectedItemsCount').text(parseInt($('#J_SelectedItemsCount').text())+1);
+                    $('#J_Total').text(parseInt(($('#J_Total').text()))+parseInt(Priceitem[i].value));
+                }
+            }
             function delect_id() {
                
                 var number = $(':checkbox[checked]');
@@ -233,8 +299,7 @@
                 var check_id1=check_id.toString();
                 
                 document.location.href = "Index?arry=" + check_id1 + "";
-            }
-        </script>
+            }</script>
         <div class="footer">
             <script>
         $('.footer').load('../Person/footer')
@@ -245,9 +310,9 @@
 
     <!--操作页面-->
 
-    <div class="theme-popover-mask"></div>
+    @*<div class="theme-popover-mask"></div>*@
 
-    <div class="theme-popover">
+    @*<div class="theme-popover">
         <div class="theme-span"></div>
         <div class="theme-poptit h-title">
             <a href="javascript:;" title="关闭" class="close">×</a>
@@ -300,7 +365,7 @@
 
             </form>
         </div>
-    </div>
+    </div>*@
     <!--引导 -->
     <div id="right">
         <script>

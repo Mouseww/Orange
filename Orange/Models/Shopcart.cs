@@ -19,8 +19,10 @@ namespace Orange.Models
         public virtual int Commodity_option2_Id { get; set; }
         public Commodity_option1 Commodity_option1 { get; set; }
         public Commodity_option2 Commodity_option2 { get; set; }
-        public Commodity Commodity_id { get; set; }
-        
+        public Commodity_attribute Commodity_id { get; set; }
+        public double Price { get; set; }
+
+        public double Old_Price { get; set; }
 
 
     }

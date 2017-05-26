@@ -20,6 +20,24 @@ namespace Orange
             return r;
 
         }
+
+        internal bool UpNumber(int v,int id)
+        {
+            
+            var shop=db.Shopcart.First(a => a.Id== id);
+            var com = db.Commodity_attribute.First(b => b.Id == shop.Commodity_Id);
+            if (com.Number >= v)
+            {
+                shop.Number = v;
+                db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         internal IList<Commodity1> bizSelectType2(int type1_id, string typename)
         {
             var res1 = db.Commodity_1.Where(a => a.ID_1.ID == type1_id).Select(a => new ViewModel.Commodity1
@@ -193,9 +211,12 @@ namespace Orange
         internal bool DelectAddress(string caozuo)
         {
             int id = int.Parse(caozuo);
+           
             var ress = db.Ress.First(a => a.id == id);
             db.Ress.Remove(ress);
             db.SaveChanges();
+            
+            
             return true;
         }
         /// <summary>
@@ -357,7 +378,7 @@ namespace Orange
         /// <param name="number"></param>
         /// <param name="username"></param>
         /// <returns></returns>
-        internal Boolean AddShopcart(string Commodity_id, string attr, string attr2, string number, string username)
+        internal Boolean AddShopcart(string Commodity_id, string attr, string attr2, string number, string username,string Price,string Old_Price)
         {
 
             Shopcart shopcart = new Shopcart();
@@ -366,6 +387,8 @@ namespace Orange
             shopcart.Commodity_option2_Id = int.Parse(attr2);
             shopcart.Commodity_Id = int.Parse(Commodity_id);
             shopcart.Username = username;
+            shopcart.Old_Price =double.Parse(Old_Price);
+            shopcart.Price = double.Parse(Price);
 
             db.Shopcart.Add(shopcart);
             int res = db.SaveChanges();
@@ -582,8 +605,10 @@ namespace Orange
                     option2_id = a.Commodity_option2.Id,
                     option2_name = a.Commodity_option2.type_name,
                     Commodity_id = a.Commodity_id.Id,
-                    img = a.Commodity_id.img,
-                    img_small=a.Commodity_id.img_small,
+                    img = a.Commodity_id.Commodity.img,
+                    img_small = a.Commodity_id.Commodity.img_small,
+                    Price = a.Price,
+                    Old_Price=a.Old_Price,
                     Number = a.Number
                 }).ToList();
         }
